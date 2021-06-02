@@ -17,7 +17,7 @@ public class AimDeadZone : MonoBehaviour
     /// <param name="input">Input data</param>
     /// <param name="isMouse">Used device</param>
     /// <returns>Is dead zone?</returns>
-    public bool Check(Vector3 input, bool isMouse)
+    public bool Check(Vector2 input, bool isMouse)
     {
         if (isMouse)
         {
