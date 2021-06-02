@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class MovementInput : AbstractInputControl
 {
-    public event Action<Vector2> Movement = delegate { };
+    public event Action<Vector2> Movement;
 
     protected override void SubscribeInputActions()
     {
@@ -23,6 +23,6 @@ public class MovementInput : AbstractInputControl
 
     private void OnMovement(InputAction.CallbackContext context)
     {
-        Movement(context.ReadValue<Vector2>());
+        Movement?.Invoke(context.ReadValue<Vector2>());
     }
 }

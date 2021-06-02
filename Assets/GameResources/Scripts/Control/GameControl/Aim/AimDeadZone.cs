@@ -21,19 +21,9 @@ public class AimDeadZone : MonoBehaviour
     {
         if (isMouse)
         {
-            if (input.magnitude < MouseMinDeadZone)
-            {
-                return true;
-            }
-
-            return false;
+            return input.magnitude < MouseMinDeadZone;
         }
 
-        if (input.magnitude < MinDeadZone)
-        {
-            return true;
-        }
-
-        return false;
+        return input.magnitude < MinDeadZone;
     }
 }

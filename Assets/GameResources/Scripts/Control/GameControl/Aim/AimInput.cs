@@ -12,7 +12,7 @@ public class AimInput : AbstractInputControl
 
     private readonly Vector2 SCREEN_CENTER = new Vector2(Screen.width, Screen.height) / 2;
 
-    public event Action<Vector2> Aim = delegate { };
+    public event Action<Vector2> Aim;
 
     [SerializeField] private AimDeadZone deadZone;
 
@@ -35,24 +35,22 @@ public class AimInput : AbstractInputControl
 
         if (isMouse)
         {
-            SetMouseDirection(input);
+            SetDirection(GetMouseAim(input));
 
             return;
         }
 
-        SetDirection(input);
+        SetDirection(GetAim(input));
     }
     
-    private void SetMouseDirection(Vector2 input)
+    private Vector2 GetAim(Vector2 input)
     {        
-        Vector2 aim = new Vector2(input.x / SCREEN_CENTER.x, input.y / SCREEN_CENTER.y) - Vector2.one;
+        return new Vector2(input.x, input.y);
+    }
 
-        if (deadZone.Check(aim, true) == false)
-        {            
-            Aim(aim.normalized);
-
-            return;
-        }
+    private Vector2 GetMouseAim(Vector2 input)
+    {        
+        return new Vector2(input.x / SCREEN_CENTER.x, input.y / SCREEN_CENTER.y) - Vector2.one;
     }
 
     private void SetDirection(Vector2 input)
@@ -61,7 +59,7 @@ public class AimInput : AbstractInputControl
 
         if (deadZone.Check(aim, false) == false)
         {
-            Aim(aim.normalized);
+            Aim?.Invoke(aim.normalized);
 
             return;
         }
