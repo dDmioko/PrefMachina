@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public abstract class AbstractInputControl : MonoBehaviour
 {
-    public event Action Inited = delegate { };
+    public event Action Inited;
 
     protected PlayerActions inputActions;
 
@@ -14,7 +14,7 @@ public abstract class AbstractInputControl : MonoBehaviour
     {
         inputActions = new PlayerActions();
 
-        Inited();
+        Inited?.Invoke();
     }
 
     protected virtual void OnEnable()
@@ -43,7 +43,7 @@ public abstract class AbstractInputControl : MonoBehaviour
         SubscribeInputActions();
     }
 
-    private void DeactivateInputActions()
+    protected virtual void DeactivateInputActions()
     {
         inputActions.Main.Disable();
 
