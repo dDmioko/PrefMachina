@@ -31,16 +31,10 @@ public class AimInput : AbstractInputControl
     private void OnAim(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
-        bool isMouse = context.control.device.displayName.Equals(MOUSE_DEVICE);        
+        bool isMouse = context.control.device.displayName.Equals(MOUSE_DEVICE);
 
-        if (isMouse)
-        {
-            SetDirection(GetMouseAim(input));
-
-            return;
-        }
-
-        SetDirection(GetAim(input));
+        input = isMouse ? GetMouseAim(input) : GetAim(input);
+        SetDirection(input, isMouse);
     }
     
     private Vector2 GetAim(Vector2 input)
@@ -53,11 +47,11 @@ public class AimInput : AbstractInputControl
         return new Vector2(input.x / SCREEN_CENTER.x, input.y / SCREEN_CENTER.y) - Vector2.one;
     }
 
-    private void SetDirection(Vector2 input)
+    private void SetDirection(Vector2 input, bool isMouse)
     {
         Vector2 aim = new Vector2(input.x, input.y);
 
-        if (deadZone.Check(aim, false) == false)
+        if (deadZone.Check(aim, isMouse) == false)
         {
             Aim?.Invoke(aim.normalized);
 
