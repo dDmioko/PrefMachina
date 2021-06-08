@@ -8,9 +8,9 @@ public class MovementControl : MonoBehaviour
 {
     [SerializeField] private MovementInput input = default;
 
-    [SerializeField] private float speed = 0.2f;
+    [SerializeField] private Rigidbody body;
 
-    private Vector2 direction = Vector2.zero;
+    [SerializeField] private float speed = 0.2f;
 
     private void OnEnable()
     {
@@ -22,21 +22,11 @@ public class MovementControl : MonoBehaviour
         input.Movement -= OnMovement;
     }
 
-    private void FixedUpdate()
-    {
-        Move();
-    }
-
-    private void Move()
+    private void OnMovement(Vector2 direction)
     {
         float x = speed * direction.x;
         float z = speed * direction.y;
 
-        transform.position += z * transform.forward + x * transform.right;
-    }
-
-    private void OnMovement(Vector2 direction)
-    {
-        this.direction = direction;
+        body.velocity = z * transform.forward + x * transform.right;
     }
 }
