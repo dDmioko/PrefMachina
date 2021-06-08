@@ -8,7 +8,7 @@ public class MovementControl : MonoBehaviour
 {
     [SerializeField] private MovementInput input = default;
 
-    [SerializeField] private Rigidbody body;
+    [SerializeField] private Rigidbody body = default;
 
     [SerializeField] private float speed = 0.2f;
 
