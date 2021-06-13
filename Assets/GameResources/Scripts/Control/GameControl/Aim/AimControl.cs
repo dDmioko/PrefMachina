@@ -11,7 +11,7 @@ public class AimControl : MonoBehaviour
     [Range(0, Mathf.PI)]
     [SerializeField] private float speed = Mathf.PI;
 
-    private Vector3 direction = Vector2.zero;
+    private Vector3 direction = Vector3.zero;
 
     private void OnEnable()
     {
@@ -30,12 +30,13 @@ public class AimControl : MonoBehaviour
 
     private void Rotate()
     {
-        Vector3 newDirection = Vector3.RotateTowards(transform.forward, new Vector3(direction.x, 0, direction.y), speed, 0.0f);
+        Vector3 newDirection = Vector3.RotateTowards(transform.forward, direction, speed, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
     private void OnAim(Vector2 direction)
     {
-        this.direction = direction;
+        this.direction.x = direction.x;
+        this.direction.z = direction.y;
     }
 }
