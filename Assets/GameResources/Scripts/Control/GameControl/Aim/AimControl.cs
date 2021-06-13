@@ -36,6 +36,7 @@ public class AimControl : MonoBehaviour
 
     private void OnAim(Vector2 direction)
     {
-        this.direction = new Vector3(direction.x, 0, direction.y);
+        this.direction.x = direction.x;
+        this.direction.z = direction.y;
     }
 }

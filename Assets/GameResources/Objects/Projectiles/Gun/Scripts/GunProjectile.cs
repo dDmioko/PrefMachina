@@ -12,9 +12,17 @@ public class GunProjectile : AbstractProjectile
     [Tooltip("In pixels. If projectile fly further - it deactivates")]
     [SerializeField] private float outOfScreenDistance = 50f;
 
-    private float startForce;
+    private Rect screenBox;
 
     private Vector3 previousPosition;
+
+    private void Awake()
+    {
+        screenBox = new Rect(-outOfScreenDistance,
+            -outOfScreenDistance,
+            Screen.width + outOfScreenDistance,
+            Screen.height + outOfScreenDistance);
+    }
 
     public override void Init(Vector3 position, Quaternion direction, AbstractProjectileData data)
     {
@@ -22,15 +30,13 @@ public class GunProjectile : AbstractProjectile
 
         base.Init(position, direction, data);
 
-        startForce = downCastedData.StartForce;
-
         previousPosition = transform.position;
 
         IsActive = true;
 
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
-        body.AddForce(transform.forward * startForce, ForceMode.Impulse);
+        body.AddForce(transform.forward * downCastedData.StartForce, ForceMode.Impulse);
     }
 
     private void FixedUpdate()
@@ -46,41 +52,23 @@ public class GunProjectile : AbstractProjectile
     protected override void Move()
     {
         Vector3 direction = transform.position - previousPosition;
-        transform.rotation = direction != Vector3.zero ? Quaternion.LookRotation(direction) : transform.rotation;
+
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
 
         previousPosition = transform.position;
     }
 
     protected void CheckOffScreenPosition()
     {
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 vec3 = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 projectileOnRect = new Vector2(vec3.x, vec3.z);
 
-        if (screenPoint.x < -outOfScreenDistance)
+        if (screenBox.Contains(projectileOnRect, true) == false)
         {
             IsActive = false;
-
-            return;
-        }
-
-        if (screenPoint.x > Screen.width + outOfScreenDistance)
-        {
-            IsActive = false;
-
-            return;
-        }
-
-        if (screenPoint.y < -outOfScreenDistance)
-        {
-            IsActive = false;
-
-            return;
-        }
-
-        if (screenPoint.y > Screen.height + outOfScreenDistance)
-        {
-            IsActive = false;
-
-            return;
         }
     }
 }

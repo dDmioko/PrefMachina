@@ -8,10 +8,7 @@ public class GunProjectileOnHitBehavior : MonoBehaviour
 {
     [SerializeField] private AbstractProjectile projectile;
 
-    /// <summary>
-    /// Write log in console and deactivate object
-    /// </summary>
-    public void OnHit(Collider collider)
+    private void OnHit(Collider collider)
     {
         //TODO: Change to more "Player" component as posible
         //and dont use tags
