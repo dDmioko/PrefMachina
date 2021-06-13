@@ -739,6 +739,10 @@ PrefabInstance:
       propertyPath: caster
       value: 
       objectReference: {fileID: 340155965}
+    - target: {fileID: 2653795715617287919, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
+      propertyPath: projectileData
+      value: 
+      objectReference: {fileID: 11400000, guid: 104561092ecb8a946bd877275ed75989, type: 2}
     - target: {fileID: 2653795715868038296, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -797,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653795716104244915, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
       propertyPath: m_Mass
-      value: 0.01
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2653795716104244915, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
       propertyPath: m_Interpolate
