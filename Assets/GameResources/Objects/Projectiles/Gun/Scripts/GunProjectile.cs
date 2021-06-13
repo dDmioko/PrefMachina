@@ -66,9 +66,6 @@ public class GunProjectile : AbstractProjectile
         Vector3 vec3 = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 projectileOnRect = new Vector2(vec3.x, vec3.z);
 
-        if (screenBox.Contains(projectileOnRect, true) == false)
-        {
-            IsActive = false;
-        }
+        IsActive = screenBox.Contains(projectileOnRect, true);
     }
 }
