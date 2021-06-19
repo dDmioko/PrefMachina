@@ -64,7 +64,7 @@ public class GunProjectile : AbstractProjectile
     protected void CheckOffScreenPosition()
     {
         Vector3 vec3 = Camera.main.WorldToScreenPoint(transform.position);
-        Vector2 projectileOnRect = new Vector2(vec3.x, vec3.z);
+        Vector2 projectileOnRect = new Vector2(vec3.x, vec3.y);
 
         IsActive = screenBox.Contains(projectileOnRect, true);
     }
