@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Player movement input
+/// Player walk input
 /// </summary>
-public class MovementInput : AbstractInputControl
+public class WalkInputControl : AbstractInputControl
 {
     public event Action<Vector2> Movement;
 

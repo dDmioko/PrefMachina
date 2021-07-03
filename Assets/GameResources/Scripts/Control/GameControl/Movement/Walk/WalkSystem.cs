@@ -7,7 +7,7 @@ using Leopotam.Ecs;
 /// <summary>
 /// Add velocity to body
 /// </summary>
-public class WalkingSystem : IEcsRunSystem
+public class WalkSystem : IEcsRunSystem
 {    
     private EcsWorld _world = null;
 

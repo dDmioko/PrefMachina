@@ -7,7 +7,7 @@ using Voody.UniLeo;
 
 public class StartupEcsSystems : MonoBehaviour
 {
-    [SerializeField] private MovementInput input;
+    [SerializeField] private WalkInputControl input;
 
     private EcsWorld _world;
     private EcsSystems _systems;
@@ -18,7 +18,7 @@ public class StartupEcsSystems : MonoBehaviour
 
         _systems = new EcsSystems(_world)
             .ConvertScene()
-            .Add(new WalkingSystem())
+            .Add(new WalkSystem())
             .Add(new WalkInputSystem(input));
 
         _systems.Init();

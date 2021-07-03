@@ -13,9 +13,9 @@ public class WalkInputSystem : IEcsSystem
 
     private EcsFilter<WalkInput, Walk> _filter = null;
 
-    private MovementInput input;
+    private WalkInputControl input;
 
-    public WalkInputSystem(MovementInput input)
+    public WalkInputSystem(WalkInputControl input)
     {
         this.input = input;
 
