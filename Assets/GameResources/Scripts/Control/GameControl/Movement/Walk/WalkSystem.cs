@@ -8,13 +8,11 @@ using Leopotam.Ecs;
 /// Add velocity to body
 /// </summary>
 public class WalkSystem : IEcsRunSystem
-{    
-    private EcsWorld _world = null;
-
+{
     private EcsFilter<Walk> _filter = null;
 
     public void Run()
-    {
+    {        
         foreach (var i in _filter)
         {
             ref EcsEntity entity = ref _filter.GetEntity(i);

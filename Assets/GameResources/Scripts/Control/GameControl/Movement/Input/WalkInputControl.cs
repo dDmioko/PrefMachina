@@ -7,22 +7,22 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class WalkInputControl : AbstractInputControl
 {
-    public event Action<Vector2> Movement;
+    public event Action<Vector2> Input;
 
     protected override void SubscribeInputActions()
     {
-        inputActions.Main.Movement.performed += OnMovement;
-        inputActions.Main.Movement.canceled += OnMovement;
+        inputActions.Main.Movement.performed += OnInput;
+        inputActions.Main.Movement.canceled += OnInput;
     }
 
     protected override void UnsubscribeInputActions()
     {
-        inputActions.Main.Movement.performed -= OnMovement;
-        inputActions.Main.Movement.canceled -= OnMovement;
+        inputActions.Main.Movement.performed -= OnInput;
+        inputActions.Main.Movement.canceled -= OnInput;
     }
 
-    private void OnMovement(InputAction.CallbackContext context)
+    private void OnInput(InputAction.CallbackContext context)
     {
-        Movement?.Invoke(context.ReadValue<Vector2>());
+        Input?.Invoke(context.ReadValue<Vector2>());
     }
 }

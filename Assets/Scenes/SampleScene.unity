@@ -770,6 +770,8 @@ GameObject:
   - component: {fileID: 2063704721}
   - component: {fileID: 2063704723}
   - component: {fileID: 2063704722}
+  - component: {fileID: 2063704725}
+  - component: {fileID: 2063704724}
   m_Layer: 0
   m_Name: StartupSystems
   m_TagString: Untagged
@@ -815,7 +817,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac80eabae583a546bef8084ab1b0262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 2063704722}
+  walkInput: {fileID: 2063704722}
+  aimInput: {fileID: 2063704725}
+--- !u!114 &2063704724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063704720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81275d9a88c6647479f237f55ab97546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MinDeadZone: 0.125
+  MouseMinDeadZone: 0.125
+--- !u!114 &2063704725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063704720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b752abffbe032841b7f20a5e412791b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadZone: {fileID: 2063704724}
 --- !u!1001 &2653795716104244913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -875,7 +905,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2653795716317098078, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
+    - {fileID: 2653795716317098076, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
+    - {fileID: 2653795716317098079, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
 --- !u!1001 &6943693931875139685
 PrefabInstance:

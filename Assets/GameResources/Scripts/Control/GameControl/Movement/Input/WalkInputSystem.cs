@@ -9,9 +9,7 @@ using Leopotam.Ecs;
 /// </summary>
 public class WalkInputSystem : IEcsSystem
 {
-    private EcsWorld _world = null;
-
-    private EcsFilter<WalkInput, Walk> _filter = null;
+    private EcsFilter<Walk, WalkInput> _filter = null;
 
     private WalkInputControl input;
 
@@ -19,20 +17,20 @@ public class WalkInputSystem : IEcsSystem
     {
         this.input = input;
 
-        input.Movement += OnMovement;
+        input.Input += OnInput;
     }
 
     ~WalkInputSystem()
     {
-        input.Movement -= OnMovement;
+        input.Input -= OnInput;
     }
 
-    private void OnMovement(Vector2 direction)
+    private void OnInput(Vector2 direction)
     {
         foreach (var i in _filter)
         {
             ref EcsEntity entity = ref _filter.GetEntity(i);
-            ref Walk movable = ref _filter.Get2(i);
+            ref Walk movable = ref _filter.Get1(i);
 
             float x = movable.speed * direction.x;
             float z = movable.speed * direction.y;

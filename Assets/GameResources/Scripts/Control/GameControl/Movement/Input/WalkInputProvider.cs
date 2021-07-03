@@ -1,3 +1,3 @@
 using Voody.UniLeo;
 
-public class WalkInputProvider : MonoProvider<WalkInput> { }
+public sealed class WalkInputProvider : MonoProvider<WalkInput> { }
