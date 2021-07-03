@@ -12,7 +12,7 @@ public class GunProjectileOnHitBehavior : MonoBehaviour
     {
         //TODO: Change to more "Player" component as posible
         //and dont use tags
-        if (collider.TryGetComponent(out MovementInput input) == false)
+        if (collider.TryGetComponent(out WalkProvider input) == false)
         {
             projectile.IsActive = false;
         }

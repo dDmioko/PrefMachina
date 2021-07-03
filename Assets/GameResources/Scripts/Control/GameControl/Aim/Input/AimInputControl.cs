@@ -6,29 +6,29 @@ using UnityEngine.InputSystem;
 /// Player aim input
 /// </summary>
 [RequireComponent(typeof(AimDeadZone))]
-public class AimInput : AbstractInputControl
+public class AimInputControl : AbstractInputControl
 {
     private const string MOUSE_DEVICE = "Mouse";
 
     private readonly Vector2 SCREEN_CENTER = new Vector2(Screen.width, Screen.height) / 2;
 
-    public event Action<Vector2> Aim;
+    public event Action<Vector2> Input;
 
     [SerializeField] private AimDeadZone deadZone;
 
     protected override void SubscribeInputActions()
     {
-        inputActions.Main.Aim.performed += OnAim;
-        inputActions.Main.Aim.canceled += OnAim;
+        inputActions.Main.Aim.performed += OnInput;
+        inputActions.Main.Aim.canceled += OnInput;
     }
 
     protected override void UnsubscribeInputActions()
     {
-        inputActions.Main.Aim.performed -= OnAim;
-        inputActions.Main.Aim.canceled -= OnAim;
+        inputActions.Main.Aim.performed -= OnInput;
+        inputActions.Main.Aim.canceled -= OnInput;
     }
 
-    private void OnAim(InputAction.CallbackContext context)
+    private void OnInput(InputAction.CallbackContext context)
     {
         Vector2 input = context.ReadValue<Vector2>();
         bool isMouse = context.control.device.displayName.Equals(MOUSE_DEVICE);
@@ -46,7 +46,7 @@ public class AimInput : AbstractInputControl
     {
         if (deadZone.Check(input, isMouse) == false)
         {
-            Aim?.Invoke(input.normalized);
+            Input?.Invoke(input.normalized);
         }
     }
 }
