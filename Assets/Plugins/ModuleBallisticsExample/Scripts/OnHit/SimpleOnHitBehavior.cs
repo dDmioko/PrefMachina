@@ -8,41 +8,29 @@ namespace ModuleBallistics
     public class SimpleOnHitBehavior : MonoBehaviour
     {
         [SerializeField]
-        private AbstractProjectile projectile;
+        private AbstractProjectile projectile = default;
 
-        /// <summary>
-        /// Write log in console and deactivate object
-        /// </summary>
-        public void OnHit()
+        private void OnTriggerEnter(Collider collider)
         {
-            Debug.Log(gameObject.name + " Hit!");
-
-            projectile.IsActive = false;
+            OnEnvironmentHit(collider);
         }
 
         /// <summary>
-        /// Write log in console and deactivate object
-        /// </summary>
-        public void OnHit(Collision collision)
-        {
-            Debug.Log(gameObject.name + " Hit " + collision.gameObject.name);
-
-            projectile.IsActive = false;
-        }
-
-        /// <summary>
-        /// Write log in console and deactivate object
+        /// Specify which object was hit
         /// </summary>
         public void OnHit(Collider collider)
         {
-            Debug.Log(gameObject.name + " Hit " + collider.gameObject.name);
-
-            projectile.IsActive = false;
+            OnEnvironmentHit(collider);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        /// <summary>
+        /// Write log in console and deactivate object
+        /// </summary>
+        private void OnEnvironmentHit(Collider collider)
         {
-            OnHit(collision);
+            Debug.Log(gameObject.name + " hit environment " + collider.gameObject.name + " and been destroyed");
+
+            projectile.IsActive = false;
         }
     }
 }

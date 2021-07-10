@@ -15,7 +15,7 @@ namespace ModuleBallistics
         private const string PROJECTILE_POOL_NAME = "ProjectilePool";
 
         [Tooltip("Better setup in editor, not in runtime")]
-        [SerializeField] private ProjectilePool projectilePool;
+        [SerializeField] private ProjectilePool projectilePool = null;
 
         private void OnEnable()
         {
@@ -28,18 +28,18 @@ namespace ModuleBallistics
         /// <param name="position">Position</param>
         /// <param name="direction">Direction</param>
         /// <param name="data">Data</param>
-        public void Cast(Vector3 position, Quaternion direction, AbstractProjectileData data)
+        public void Cast(ShootData shootData, AbstractProjectileData projectileData)
         {
-            AbstractProjectile projectile = projectilePool.GetProjectile(data);
+            AbstractProjectile projectile = projectilePool.GetProjectile(projectileData);
 
-            if (projectile == null)
+            if (projectile == false)
             {
                 Debug.LogError("projectile == null");
 
                 return;
             }
 
-            projectile.Init(position, direction, data);
+            projectile.Init(shootData, projectileData);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace ModuleBallistics
         /// <returns>Is already linked?</returns>
         public bool CheckProjectilePool()
         {
-            if (projectilePool != null)
+            if (projectilePool)
             {
                 return true;
             }
@@ -67,12 +67,12 @@ namespace ModuleBallistics
         {
             GameObject hierarchyObject = GameObject.Find($"{path ?? ""}/{name}");
 
-            if (hierarchyObject != null)
+            if (hierarchyObject)
             {
                 return hierarchyObject;
             }
 
-            if (target == null)
+            if (target == false)
             {
                 return new GameObject(name);
             }

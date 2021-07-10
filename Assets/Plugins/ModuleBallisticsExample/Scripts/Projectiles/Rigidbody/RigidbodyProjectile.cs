@@ -9,19 +9,19 @@ namespace ModuleBallistics
     public class RigidbodyProjectile : AbstractProjectile
     {
         [SerializeField]
-        private Rigidbody body;
+        private Rigidbody body = default;
 
-        private float startForce;
+        private float startForce = 0;
 
-        private Vector3 previousPosition;
+        private Vector3 previousPosition = default;
 
-        public override void Init(Vector3 position, Quaternion direction, AbstractProjectileData data)
+        public override void Init(ShootData shootData, AbstractProjectileData projectileData)
         {
-            RigidbodyProjectileData downCastedData = data as RigidbodyProjectileData;
+            RigidbodyProjectileData downCastedProjectileData = projectileData as RigidbodyProjectileData;
 
-            base.Init(position, direction, data);
+            InitTransform(shootData);
 
-            startForce = downCastedData.StartForce;
+            startForce = downCastedProjectileData.StartForce;
 
             previousPosition = transform.position;
 
@@ -40,7 +40,7 @@ namespace ModuleBallistics
             }
         }
 
-        protected override void Move()
+        protected void Move()
         {
             Vector3 direction = transform.position - previousPosition;
             transform.rotation = direction != Vector3.zero ? Quaternion.LookRotation(direction) : transform.rotation;

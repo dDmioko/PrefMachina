@@ -24,11 +24,11 @@ public class GunProjectile : AbstractProjectile
             Screen.height + outOfScreenDistance);
     }
 
-    public override void Init(Vector3 position, Quaternion direction, AbstractProjectileData data)
+    public override void Init(ShootData shootData, AbstractProjectileData projectileData)//; Vector3 position, Quaternion direction, AbstractProjectileData data)
     {
-        GunProjectileData downCastedData = data as GunProjectileData;
+        GunProjectileData downCastedProjectileData = projectileData as GunProjectileData;
 
-        base.Init(position, direction, data);
+        base.Init(shootData, projectileData);
 
         previousPosition = transform.position;
 
@@ -36,7 +36,7 @@ public class GunProjectile : AbstractProjectile
 
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
-        body.AddForce(transform.forward * downCastedData.StartForce, ForceMode.Impulse);
+        body.AddForce(transform.forward * downCastedProjectileData.StartForce, ForceMode.Impulse);
     }
 
     private void FixedUpdate()
@@ -49,7 +49,7 @@ public class GunProjectile : AbstractProjectile
         }
     }
 
-    protected override void Move()
+    protected void Move()
     {
         Vector3 direction = transform.position - previousPosition;
 
