@@ -23,6 +23,6 @@ public class FireControl : MonoBehaviour
 
     private void OnFire()
     {
-        gun.Fire();
+        gun.StartFire();
     }
 }
