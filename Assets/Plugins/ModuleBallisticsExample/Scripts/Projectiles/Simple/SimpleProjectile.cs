@@ -7,15 +7,15 @@ namespace ModuleBallistics
     /// </summary>
     public class SimpleProjectile : AbstractProjectile
     {
-        private float speed;
+        private float speed = 0;
 
-        public override void Init(Vector3 position, Quaternion direction, AbstractProjectileData data)
+        public override void Init(ShootData shootData, AbstractProjectileData projectileData)
         {
-            SimpleProjectileData downCastedData = data as SimpleProjectileData;
+            SimpleProjectileData downCastedProjectileData = projectileData as SimpleProjectileData;
 
-            base.Init(position, direction, data);
+            InitTransform(shootData);
 
-            speed = downCastedData.Speed;
+            speed = downCastedProjectileData.Speed;
 
             IsActive = true;
         }
@@ -28,7 +28,7 @@ namespace ModuleBallistics
             }
         }
 
-        protected override void Move()
+        protected void Move()
         {
             transform.position = transform.position + transform.forward * speed;
         }
