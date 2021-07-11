@@ -16,13 +16,15 @@ namespace ModuleBallistics
         {
             get
             {
+                isActive = gameObject.activeSelf;                
+
                 return isActive;
             }
 
             set
             {
                 isActive = value;
-                gameObject.SetActive(value);
+                gameObject.SetActive(value);                
             }
         }
 
@@ -41,6 +43,6 @@ namespace ModuleBallistics
         /// <summary>
         /// Move projectile while it active    
         /// </summary>
-        protected abstract void Move();
+        protected virtual void Move() { }
     }
 }
