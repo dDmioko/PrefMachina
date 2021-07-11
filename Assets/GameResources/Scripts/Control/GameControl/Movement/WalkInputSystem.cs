@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using Leopotam.Ecs;
@@ -7,20 +5,18 @@ using Leopotam.Ecs;
 /// <summary>
 /// Get input and add it to walk component
 /// </summary>
-public class WalkInputSystem : IEcsSystem
+public class WalkInputSystem : EcsSystemWrapper, IEcsSystem
 {
     private EcsFilter<Walk, WalkInput> _filter = null;
 
-    private WalkInputControl input;
+    [SerializeField] private WalkInputControl input;
 
-    public WalkInputSystem(WalkInputControl input)
+    private void OnEnable()
     {
-        this.input = input;
-
         input.Input += OnInput;
     }
 
-    ~WalkInputSystem()
+    private void OnDisable()
     {
         input.Input -= OnInput;
     }

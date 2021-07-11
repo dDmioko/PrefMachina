@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 using Leopotam.Ecs;
 
 /// <summary>
 /// Add velocity to body
 /// </summary>
-public class WalkSystem : IEcsRunSystem
+public class WalkSystem : EcsSystemWrapper, IEcsRunSystem
 {
     private EcsFilter<Walk> _filter = null;
 
