@@ -2,14 +2,11 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct Walk
+public struct RotateToDirection
 {
+    public GameObject gameObject;
     public Transform transform;
 
-    public Rigidbody body;
-
-    public float speed;
-
     [HideInInspector]
-    public Vector3 velocity;
+    public Vector3 previousPosition;
 }

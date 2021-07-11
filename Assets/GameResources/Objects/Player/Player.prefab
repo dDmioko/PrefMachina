@@ -177,8 +177,6 @@ GameObject:
   - component: {fileID: 2653795716104244918}
   - component: {fileID: 4909827020004584290}
   - component: {fileID: 7783724765311401310}
-  - component: {fileID: 966509985945994136}
-  - component: {fileID: 3204171824285098319}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -301,32 +299,6 @@ MonoBehaviour:
     transform: {fileID: 2653795716317098072}
     speed: 1.57
     direction: {x: 0, y: 0, z: 0}
---- !u!114 &966509985945994136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2653795715868038297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4365b4ac77ad7ca4895be89d0d27f3d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3204171824285098319
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2653795715868038297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 344e5a011395ea840a3f4fbf2486911f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 966509985945994136}
-  gun: {fileID: 2653795715617287919}
 --- !u!1 &2653795716317098073
 GameObject:
   m_ObjectHideFlags: 0
