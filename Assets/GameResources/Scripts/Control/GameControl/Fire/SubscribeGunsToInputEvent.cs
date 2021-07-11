@@ -3,7 +3,7 @@ using Leopotam.Ecs;
 /// <summary>
 /// Subscribe guns fire functions to input event
 /// </summary>
-public class SubscribeGunsToInputEvent : IEcsInitSystem
+public class SubscribeGunsToInputEvent : EcsSystemWrapper, IEcsInitSystem
 {
     private EcsFilter<Fire, FireInput> _filter = null;
 

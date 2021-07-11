@@ -2,19 +2,16 @@ using UnityEngine;
 
 using Leopotam.Ecs;
 
-public class DeactivateOnOffScreenSystem : IEcsInitSystem, IEcsRunSystem
+public class DeactivateOnOffScreenSystem : EcsSystemWrapper, IEcsRunSystem
 {
     private EcsFilter<DeactivateOnOffScreen> _filter = null;
 
     private Rect screenBox;
 
-    private float outOfScreenDistance;
+    [Tooltip("In pixels. If projectile fly further - it deactivates")]
+    [SerializeField] private float outOfScreenDistance;
 
-    public DeactivateOnOffScreenSystem(float outOfScreenDistance) {
-        this.outOfScreenDistance = outOfScreenDistance;
-    }
-
-    public void Init()
+    private void Awake()
     {
         screenBox = new Rect(-outOfScreenDistance,
             -outOfScreenDistance,
@@ -49,7 +46,7 @@ public class DeactivateOnOffScreenSystem : IEcsInitSystem, IEcsRunSystem
 
             if (component.isDelete)
             {
-                Object.Destroy(component.gameObject);
+                Destroy(component.gameObject);
             }
         }
     }

@@ -1,22 +1,21 @@
 using Leopotam.Ecs;
+using UnityEngine;
 
 /// <summary>
 /// Fire input system
 /// </summary>
-public class FireInputSystem : IEcsSystem
+public class FireInputSystem : EcsSystemWrapper, IEcsSystem
 {
     private EcsFilter<FireInput> _filter = null;
 
-    private FireInputControl input;
+    [SerializeField] private FireInputControl input;
 
-    public FireInputSystem(FireInputControl input)
+    private void OnEnable()
     {
-        this.input = input;
-
         input.Input += OnInput;
     }
 
-    ~FireInputSystem()
+    private void OnDisable()
     {
         input.Input -= OnInput;
     }

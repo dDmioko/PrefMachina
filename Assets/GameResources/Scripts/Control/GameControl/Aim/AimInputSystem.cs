@@ -1,27 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using Leopotam.Ecs;
 
-public class AimInputSystem : IEcsSystem
+public class AimInputSystem : EcsSystemWrapper
 {
     private EcsFilter<Aim, AimInput> _filter = null;
 
-    private AimInputControl input;
+    [SerializeField] private AimInputControl input;
 
-    public AimInputSystem(AimInputControl input)
+    private void OnEnable()
     {
-        this.input = input;
-
         input.Input += OnInput;
     }
 
-    ~AimInputSystem()
+    private void OnDisable()
     {
         input.Input -= OnInput;
     }
-
+    
     private void OnInput(Vector2 direction)
     {
         foreach (var i in _filter)

@@ -5,7 +5,7 @@ using Leopotam.Ecs;
 /// <summary>
 /// Rotate moving object towards its direction
 /// </summary>
-public class RotateToDirectionSystem : IEcsRunSystem
+public class RotateToDirectionSystem : EcsSystemWrapper, IEcsRunSystem
 {
     private EcsFilter<RotateToDirection> _filter = null;
 
@@ -13,7 +13,6 @@ public class RotateToDirectionSystem : IEcsRunSystem
     {
         foreach (var i in _filter)
         {
-            ref EcsEntity entity = ref _filter.GetEntity(i);
             ref RotateToDirection rotateToDirecion = ref _filter.Get1(i);
 
             if (rotateToDirecion.gameObject.activeSelf)

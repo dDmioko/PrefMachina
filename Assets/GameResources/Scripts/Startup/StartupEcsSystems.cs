@@ -2,44 +2,38 @@ using UnityEngine;
 
 using Leopotam.Ecs;
 using Voody.UniLeo;
+using System;
 
 public class StartupEcsSystems : MonoBehaviour
 {
-    [SerializeField] private WalkInputControl walkInput;
-    [SerializeField] private AimInputControl aimInput;
-    [SerializeField] private FireInputControl fireInput;
-
-    [Tooltip("In pixels. If projectile fly further - it deactivates")]
-    [SerializeField] private float outOfScreenDistance = 50f;
+    [SerializeField] private EcsSystemWrapper[] awake;
+    [SerializeField] private EcsSystemWrapper[] start;
+    [SerializeField] private EcsSystemWrapper[] update;
+    [SerializeField] private EcsSystemWrapper[] fixedUpdate;
 
     private EcsWorld _world;
+
+    private EcsSystems _awake;
+    private EcsSystems _start;
     private EcsSystems _update;
     private EcsSystems _fixedUpdate;
 
     private void Awake()
     {        
-        _world = new EcsWorld();
+        _world = new EcsWorld();        
 
-        _update = new EcsSystems(_world)
-            .ConvertScene()
-            .Add(new WalkSystem())
-            .Add(new WalkInputSystem(walkInput))
-            .Add(new AimSystem())
-            .Add(new AimInputSystem(aimInput))
-            .Add(new FireInputSystem(fireInput))
-            .Add(new SubscribeGunsToInputEvent())
-            .Add(new DeactivateOnOffScreenSystem(outOfScreenDistance));
+        AddSystemsToExecutionGroup();        
 
-        _fixedUpdate = new EcsSystems(_world)
-            .ConvertScene()
-            .Add(new RotateToDirectionSystem());
+        Init();
+    }
 
-        _update.Init();
-        _fixedUpdate.Init();
+    private void Start()
+    {
+        _start.Init();
     }
 
     private void Update()
-    {        
+    {
         _update.Run();
     }
 
@@ -49,8 +43,36 @@ public class StartupEcsSystems : MonoBehaviour
     }
 
     private void OnDestroy()
-    {        
-        _update.Destroy();        
+    {
+        _awake.Destroy();
+        _start.Destroy();
+        _update.Destroy();
+
         _world.Destroy();
     }
+
+    private void Init()
+    {
+        _awake.Init();        
+        _update.Init();
+        _fixedUpdate.Init();        
+    }
+
+    private void AddSystemsToExecutionGroup()
+    {
+        AddSystemsToExecutionGroup(ref _awake, awake);
+        AddSystemsToExecutionGroup(ref _start, start);
+        AddSystemsToExecutionGroup(ref _update, update);
+        AddSystemsToExecutionGroup(ref _fixedUpdate, fixedUpdate);
+    }
+
+    private void AddSystemsToExecutionGroup(ref EcsSystems group, EcsSystemWrapper[] systems)
+    {
+        group = new EcsSystems(_world).ConvertScene();
+
+        foreach (EcsSystemWrapper system in systems)
+        {
+            group = group.Add(system);
+        }
+    }    
 }

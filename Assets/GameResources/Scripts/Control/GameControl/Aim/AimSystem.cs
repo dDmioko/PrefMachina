@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using Leopotam.Ecs;
 
-public class AimSystem : IEcsRunSystem
+public class AimSystem : EcsSystemWrapper, IEcsRunSystem
 {
     private EcsFilter<Aim> _filter = null;
 
