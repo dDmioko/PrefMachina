@@ -9,17 +9,17 @@ namespace ModuleBallistics
     public class RaycastProjectile : AbstractProjectile
     {
         [SerializeField]
-        private UnityEvent<Collider> OnHit;
+        private UnityEvent<Collider> OnHit = default;
 
-        private float speed;
+        private float speed = 0;
 
-        public override void Init(Vector3 position, Quaternion direction, AbstractProjectileData data)
+        public override void Init(ShootData shootData, AbstractProjectileData projectileData)
         {
-            RaycastProjectileData downCastedData = data as RaycastProjectileData;
+            RaycastProjectileData downCastedProjectileData = projectileData as RaycastProjectileData;
 
-            base.Init(position, direction, data);
+            InitTransform(shootData);
 
-            speed = downCastedData.Speed;
+            speed = downCastedProjectileData.Speed;
 
             IsActive = true;
         }
@@ -32,7 +32,7 @@ namespace ModuleBallistics
             }
         }
 
-        protected override void Move()
+        protected void Move()
         {
             Vector3 previousPosition = transform.position;
 

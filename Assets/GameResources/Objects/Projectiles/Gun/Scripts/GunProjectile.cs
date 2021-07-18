@@ -11,14 +11,14 @@ public class GunProjectile : AbstractProjectile
 
     public override void Init(Vector3 position, Quaternion direction, AbstractProjectileData data)
     {
-        GunProjectileData downCastedData = data as GunProjectileData;
+        GunProjectileData downCastedProjectileData = projectileData as GunProjectileData;
 
-        base.Init(position, direction, data);
+        base.Init(shootData, projectileData);
 
         IsActive = true;
 
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
-        body.AddForce(transform.forward * downCastedData.StartForce, ForceMode.Impulse);
+        body.AddForce(transform.forward * downCastedProjectileData.StartForce, ForceMode.Impulse);
     }
 }
