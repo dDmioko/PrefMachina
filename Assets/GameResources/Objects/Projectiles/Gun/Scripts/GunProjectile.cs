@@ -7,65 +7,25 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GunProjectile : AbstractProjectile
 {
-    [SerializeField] private Rigidbody body;
+    [SerializeField] private Rigidbody body = default;
 
-    [Tooltip("In pixels. If projectile fly further - it deactivates")]
-    [SerializeField] private float outOfScreenDistance = 50f;
+    private AbstractTeamMark team = default;
 
-    private Rect screenBox;
+    public AbstractTeamMark Team { get => team; }
 
-    private Vector3 previousPosition;
-
-    private void Awake()
+    public override void Init(ShootData shootData, AbstractProjectileData projectileData)
     {
-        screenBox = new Rect(-outOfScreenDistance,
-            -outOfScreenDistance,
-            Screen.width + outOfScreenDistance,
-            Screen.height + outOfScreenDistance);
-    }
-
-    public override void Init(ShootData shootData, AbstractProjectileData projectileData)//; Vector3 position, Quaternion direction, AbstractProjectileData data)
-    {
+        ShootMarkData downCastedShootData = shootData as ShootMarkData;
         GunProjectileData downCastedProjectileData = projectileData as GunProjectileData;
 
         base.Init(shootData, projectileData);
 
-        previousPosition = transform.position;
-
         IsActive = true;
+
+        team = downCastedShootData.team;
 
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
         body.AddForce(transform.forward * downCastedProjectileData.StartForce, ForceMode.Impulse);
-    }
-
-    private void FixedUpdate()
-    {
-        if (IsActive)
-        {
-            Move();
-
-            CheckOffScreenPosition();
-        }
-    }
-
-    protected void Move()
-    {
-        Vector3 direction = transform.position - previousPosition;
-
-        if (direction != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(direction);
-        }
-
-        previousPosition = transform.position;
-    }
-
-    protected void CheckOffScreenPosition()
-    {
-        Vector3 vec3 = Camera.main.WorldToScreenPoint(transform.position);
-        Vector2 projectileOnRect = new Vector2(vec3.x, vec3.y);
-
-        IsActive = screenBox.Contains(projectileOnRect, true);
     }
 }

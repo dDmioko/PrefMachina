@@ -96,6 +96,9 @@ GameObject:
   - component: {fileID: 8446528094120111188}
   - component: {fileID: 1500714607737079225}
   - component: {fileID: -7870522136911307776}
+  - component: {fileID: 4021530191135774848}
+  - component: {fileID: 1626198914266646751}
+  - component: {fileID: 4798946675621755278}
   m_Layer: 0
   m_Name: GunProjectile
   m_TagString: Untagged
@@ -281,3 +284,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 1500714607737079225}
+--- !u!114 &4021530191135774848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638880214521575698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 863c7f7460b2b49abb4fa9a7ff9cb180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  convertMode: 0
+--- !u!114 &1626198914266646751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638880214521575698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c34eafa75bfe3ae489087c6eae94bb6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    gameObject: {fileID: 7638880214521575698}
+    transform: {fileID: 6297597851998577738}
+    previousPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &4798946675621755278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638880214521575698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8383b058532eaa4abd19ac0f3ecc983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value:
+    gameObject: {fileID: 7638880214521575698}
+    transform: {fileID: 6297597851998577738}
+    isDelete: 0
