@@ -6,13 +6,17 @@ using UnityEngine;
 /// </summary>
 public class GunProjectileOnHitBehavior : MonoBehaviour
 {
-    [SerializeField] private AbstractProjectile projectile = default;
+    [SerializeField] private GunProjectile projectile = default;
 
     private void OnHit(Collider collider)
     {
-        //TODO: Change to more "Player" component as posible
-        //and dont use tags
-        if (collider.TryGetComponent(out WalkProvider input) == false)
+        if (collider.TryGetComponent(out AbstractTeamMark team) == false)
+        {
+            projectile.IsActive = false;
+            return;
+        }
+
+        if (projectile.Team.GetType() != team.GetType())
         {
             projectile.IsActive = false;
         }

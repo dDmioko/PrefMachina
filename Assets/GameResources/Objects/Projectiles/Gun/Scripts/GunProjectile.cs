@@ -9,13 +9,20 @@ public class GunProjectile : AbstractProjectile
 {
     [SerializeField] private Rigidbody body = default;
 
+    private AbstractTeamMark team = default;
+
+    public AbstractTeamMark Team { get => team; }
+
     public override void Init(ShootData shootData, AbstractProjectileData projectileData)
     {
+        ShootMarkData downCastedShootData = shootData as ShootMarkData;
         GunProjectileData downCastedProjectileData = projectileData as GunProjectileData;
 
         base.Init(shootData, projectileData);
 
         IsActive = true;
+
+        team = downCastedShootData.team;
 
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
