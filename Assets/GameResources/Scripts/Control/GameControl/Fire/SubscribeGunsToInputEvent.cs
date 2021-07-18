@@ -12,7 +12,6 @@ public class SubscribeGunsToInputEvent : EcsSystemWrapper, IEcsInitSystem
     {
         foreach (var i in _filter)
         {
-            ref EcsEntity entity = ref _filter.GetEntity(i);
             ref Fire fire = ref _filter.Get1(i);
             ref FireInput input = ref _filter.Get2(i);
 

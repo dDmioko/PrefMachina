@@ -26,7 +26,6 @@ public class FireInputSystem : EcsSystemWrapper, IEcsSystem
     {
         foreach (var i in _filter)
         {
-            ref EcsEntity entity = ref _filter.GetEntity(i);
             ref FireInput input = ref _filter.Get1(i);
 
             input.Up?.Invoke();
@@ -37,7 +36,6 @@ public class FireInputSystem : EcsSystemWrapper, IEcsSystem
     {
         foreach (var i in _filter)
         {
-            ref EcsEntity entity = ref _filter.GetEntity(i);
             ref FireInput input = ref _filter.Get1(i);
 
             input.Down?.Invoke();

@@ -25,7 +25,6 @@ public class WalkInputSystem : EcsSystemWrapper, IEcsSystem
     {
         foreach (var i in _filter)
         {
-            ref EcsEntity entity = ref _filter.GetEntity(i);
             ref Walk movable = ref _filter.Get1(i);
 
             float x = movable.speed * direction.x;
