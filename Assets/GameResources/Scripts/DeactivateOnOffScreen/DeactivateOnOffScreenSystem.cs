@@ -2,6 +2,9 @@ using UnityEngine;
 
 using Leopotam.Ecs;
 
+/// <summary>
+/// Deactivate if out of range
+/// </summary>
 public class DeactivateOnOffScreenSystem : EcsSystemWrapper, IEcsRunSystem
 {
     private EcsFilter<DeactivateOnOffScreen> _filter = null;

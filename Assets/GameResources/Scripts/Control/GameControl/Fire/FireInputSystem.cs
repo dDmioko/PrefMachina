@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Fire input system
 /// </summary>
-public class FireInputSystem : EcsSystemWrapper, IEcsSystem
+public class FireInputSystem : EcsSystemWrapper
 {
     private EcsFilter<FireInput> _filter = null;
 

@@ -5,7 +5,7 @@ using Leopotam.Ecs;
 /// <summary>
 /// Get input and add it to walk component
 /// </summary>
-public class WalkInputSystem : EcsSystemWrapper, IEcsSystem
+public class WalkInputSystem : EcsSystemWrapper
 {
     private EcsFilter<Walk, WalkInput> _filter = null;
 

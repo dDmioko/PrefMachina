@@ -1,6 +1,9 @@
 using ModuleBallistics;
 using UnityEngine;
 
+/// <summary>
+/// Gun with team mark
+/// </summary>
 public class Gun : AutoGun
 {
     [SerializeField] private AbstractTeamMark team = default;

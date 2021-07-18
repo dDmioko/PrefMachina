@@ -4,6 +4,9 @@ using Leopotam.Ecs;
 using Voody.UniLeo;
 using System;
 
+/// <summary>
+/// Startup and run systems
+/// </summary>
 public class StartupEcsSystems : MonoBehaviour
 {
     [SerializeField] private EcsSystemWrapper[] awake;
@@ -19,10 +22,10 @@ public class StartupEcsSystems : MonoBehaviour
     private EcsSystems _fixedUpdate;
 
     private void Awake()
-    {        
-        _world = new EcsWorld();        
+    {
+        _world = new EcsWorld();
 
-        AddSystemsToExecutionGroup();        
+        AddSystemsToExecutionGroup();
 
         Init();
     }
@@ -53,9 +56,9 @@ public class StartupEcsSystems : MonoBehaviour
 
     private void Init()
     {
-        _awake.Init();        
+        _awake.Init();
         _update.Init();
-        _fixedUpdate.Init();        
+        _fixedUpdate.Init();
     }
 
     private void AddSystemsToExecutionGroup()
@@ -74,5 +77,5 @@ public class StartupEcsSystems : MonoBehaviour
         {
             group = group.Add(system);
         }
-    }    
+    }
 }

@@ -1,3 +1,3 @@
 using Voody.UniLeo;
 
-public class DeactivateOnOffScreenProvider : MonoProvider<DeactivateOnOffScreen> { }
+public sealed class DeactivateOnOffScreenProvider : MonoProvider<DeactivateOnOffScreen> { }
