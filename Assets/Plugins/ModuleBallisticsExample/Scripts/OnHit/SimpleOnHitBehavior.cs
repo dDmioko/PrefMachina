@@ -32,15 +32,5 @@ namespace ModuleBallistics
 
             projectile.IsActive = false;
         }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            OnHit(other);
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            OnHit(collision);
-        }
     }
 }

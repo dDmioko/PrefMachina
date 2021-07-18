@@ -9,7 +9,7 @@ public class GunProjectile : AbstractProjectile
 {
     [SerializeField] private Rigidbody body;
 
-    public override void Init(Vector3 position, Quaternion direction, AbstractProjectileData data)
+    public override void Init(ShootData shootData, AbstractProjectileData projectileData)
     {
         GunProjectileData downCastedProjectileData = projectileData as GunProjectileData;
 

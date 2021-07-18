@@ -328,7 +328,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9ea3c7d10b20949b54790025307add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimalSize: 10
+  isInitPreferedPoolSize: 1
+  projectileDatas: []
+  dictionary:
+    keyData: []
+    valueData: []
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1222,7 @@ PrefabInstance:
     - {fileID: 2653795716317098079, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
     - {fileID: 3204171824285098319, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
     - {fileID: 966509985945994136, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
+    - {fileID: 2653795715617287919, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
 --- !u!1 &2653795716104244914 stripped
 GameObject:

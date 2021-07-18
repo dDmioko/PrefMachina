@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class Gun : AbstractGun
 {
-    [SerializeField] private Caster caster;
+    [SerializeField] private Caster caster = default;
 
-    [SerializeField] private AbstractProjectileData projectileData;
+    [SerializeField] private AbstractProjectileData projectileData = default;
+
+    private ShootData shootData = new ShootData();
 
     public override void Fire()
     {
-        caster.Cast(transform.position, transform.rotation, projectileData);
+        shootData.position = transform.position;
+        shootData.rotation = transform.rotation;
+
+        caster.Cast(shootData, projectileData);
     }
 }

@@ -16,15 +16,13 @@ namespace ModuleBallistics
         {
             get
             {
-                isActive = gameObject.activeSelf;                
-
                 return isActive;
             }
 
             set
             {
                 isActive = value;
-                gameObject.SetActive(value);                
+                gameObject.SetActive(value);
             }
         }
 
@@ -39,9 +37,10 @@ namespace ModuleBallistics
             InitTransform(shootData);
         }
 
-        /// <summary>
-        /// Move projectile while it active    
-        /// </summary>
-        protected virtual void Move() { }
+        protected virtual void InitTransform(ShootData shootData)
+        {
+            transform.position = shootData.position;
+            transform.rotation = shootData.rotation;
+        }
     }
 }
