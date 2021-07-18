@@ -7,11 +7,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GunProjectileData", menuName = "Projectiles/GunProjectile")]
 public class GunProjectileData : AbstractProjectileData
 {
-    [SerializeField]
-    protected float startForce = default;
+    [SerializeField] protected float startForce = default;
 
     /// <summary>
     /// Speed
     /// </summary>
-    public float StartForce { get => startForce; }
+    public float StartForce => startForce;
+
+    [Range(0, 9999)]
+    [SerializeField] protected int damage;
+    public int Damage => damage;
 }

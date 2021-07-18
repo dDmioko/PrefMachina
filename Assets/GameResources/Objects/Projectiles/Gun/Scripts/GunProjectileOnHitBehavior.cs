@@ -1,5 +1,5 @@
-using ModuleBallistics;
 using UnityEngine;
+using Leopotam.Ecs;
 
 /// <summary>
 /// Gun projectile on hit behaviour
@@ -13,6 +13,11 @@ public class GunProjectileOnHitBehavior : MonoBehaviour
         if (collider.TryGetComponent(out AbstractTeamMark team) == false)
         {
             projectile.IsActive = false;
+
+            if (collider.TryGetComponent(out EntityProvider entity))
+            {
+                entity.Entity.Replace(new Damage() { Amount = projectile.Damage } );
+            }
 
             return;
         }

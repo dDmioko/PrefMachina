@@ -10,8 +10,10 @@ public class GunProjectile : AbstractProjectile
     [SerializeField] private Rigidbody body = default;
 
     private AbstractTeamMark team = default;
-
     public AbstractTeamMark Team { get => team; }
+
+    private int damage = 0;
+    public int Damage => damage;
 
     public override void Init(ShootData shootData, AbstractProjectileData projectileData)
     {
