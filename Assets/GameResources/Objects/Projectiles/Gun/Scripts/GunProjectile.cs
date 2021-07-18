@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GunProjectile : AbstractProjectile
 {
-    [SerializeField] private Rigidbody body;
+    [SerializeField] private Rigidbody body = default;
 
     public override void Init(ShootData shootData, AbstractProjectileData projectileData)
     {

@@ -12,22 +12,35 @@ public class FireInputSystem : EcsSystemWrapper, IEcsSystem
 
     private void OnEnable()
     {
-        input.Input += OnInput;
+        input.Down += OnDown;
+        input.Up += OnUp;
     }
 
     private void OnDisable()
     {
-        input.Input -= OnInput;
+        input.Down -= OnDown;
+        input.Up -= OnUp;
     }
 
-    private void OnInput()
+    private void OnUp()
     {
         foreach (var i in _filter)
         {
             ref EcsEntity entity = ref _filter.GetEntity(i);
             ref FireInput input = ref _filter.Get1(i);
 
-            input.Event?.Invoke();
+            input.Up?.Invoke();
+        }
+    }
+
+    private void OnDown()
+    {
+        foreach (var i in _filter)
+        {
+            ref EcsEntity entity = ref _filter.GetEntity(i);
+            ref FireInput input = ref _filter.Get1(i);
+
+            input.Down?.Invoke();
         }
     }
 }

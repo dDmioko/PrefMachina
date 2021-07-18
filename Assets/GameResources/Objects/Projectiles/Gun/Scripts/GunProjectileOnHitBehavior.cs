@@ -6,7 +6,7 @@ using UnityEngine;
 /// </summary>
 public class GunProjectileOnHitBehavior : MonoBehaviour
 {
-    [SerializeField] private AbstractProjectile projectile;
+    [SerializeField] private AbstractProjectile projectile = default;
 
     private void OnHit(Collider collider)
     {

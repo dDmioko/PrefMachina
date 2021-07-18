@@ -1065,6 +1065,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   caster: {fileID: 340155965}
   projectileData: {fileID: 11400000, guid: 104561092ecb8a946bd877275ed75989, type: 2}
+  cooldown: 0.5
+  team: {fileID: 2653795716104244917}
 --- !u!1 &1817035224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,6 +1258,18 @@ MonoBehaviour:
   value:
     Guns:
     - {fileID: 1694606096}
+--- !u!114 &2653795716104244917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653795716104244914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a0c866b1623fb41b66b1121cfc2887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6943693931875139685
 PrefabInstance:
   m_ObjectHideFlags: 0

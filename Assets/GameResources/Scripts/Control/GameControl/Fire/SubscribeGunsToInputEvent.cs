@@ -1,4 +1,5 @@
 using Leopotam.Ecs;
+using ModuleBallistics;
 
 /// <summary>
 /// Subscribe guns fire functions to input event
@@ -17,7 +18,8 @@ public class SubscribeGunsToInputEvent : EcsSystemWrapper, IEcsInitSystem
 
             foreach (AbstractGun gun in fire.Guns)
             {
-                input.Event += gun.Fire;
+                input.Up += gun.StopFire;
+                input.Down += gun.StartFire;
             }
         }
     }

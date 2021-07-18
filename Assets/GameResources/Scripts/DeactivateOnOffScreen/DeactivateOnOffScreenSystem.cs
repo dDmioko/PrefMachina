@@ -9,7 +9,7 @@ public class DeactivateOnOffScreenSystem : EcsSystemWrapper, IEcsRunSystem
     private Rect screenBox;
 
     [Tooltip("In pixels. If projectile fly further - it deactivates")]
-    [SerializeField] private float outOfScreenDistance;
+    [SerializeField] private float outOfScreenDistance = default;
 
     private void Awake()
     {

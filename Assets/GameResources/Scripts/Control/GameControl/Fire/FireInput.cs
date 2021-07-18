@@ -3,5 +3,6 @@ using System;
 [Serializable]
 public struct FireInput
 {
-    public Action Event;
+    public Action Up;
+    public Action Down;
 }

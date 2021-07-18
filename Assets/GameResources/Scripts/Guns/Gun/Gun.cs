@@ -1,19 +1,23 @@
 using ModuleBallistics;
 using UnityEngine;
 
-public class Gun : AbstractGun
+public class Gun : AutoGun
 {
-    [SerializeField] private Caster caster = default;
+    [SerializeField] private AbstractTeamMark team = default;
 
-    [SerializeField] private AbstractProjectileData projectileData = default;
+    protected new ShootMarkData shootData = new ShootMarkData();
 
-    private ShootData shootData = new ShootData();
+    protected void Awake()
+    {
+        shootData.team = team;
+    }
 
-    public override void Fire()
+    protected override void Fire()
     {
         shootData.position = transform.position;
         shootData.rotation = transform.rotation;
 
         caster.Cast(shootData, projectileData);
+        lastShootTime = Time.time;
     }
 }
