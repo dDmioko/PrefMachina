@@ -19,6 +19,7 @@ namespace ModuleBallistics
                 if (gameObject.activeSelf == false)
                 {
                     isActive = false;
+
                     return false;
                 }
 

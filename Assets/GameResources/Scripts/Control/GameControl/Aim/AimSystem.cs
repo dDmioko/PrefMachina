@@ -2,6 +2,9 @@ using UnityEngine;
 
 using Leopotam.Ecs;
 
+/// <summary>
+/// Rotate
+/// </summary>
 public class AimSystem : EcsSystemWrapper, IEcsRunSystem
 {
     private EcsFilter<Aim> _filter = null;

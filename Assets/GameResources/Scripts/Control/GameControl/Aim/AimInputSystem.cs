@@ -2,6 +2,9 @@ using UnityEngine;
 
 using Leopotam.Ecs;
 
+/// <summary>
+/// Get input and add it to aim component
+/// </summary>
 public class AimInputSystem : EcsSystemWrapper
 {
     private EcsFilter<Aim, AimInput> _filter = null;

@@ -1,3 +1,3 @@
 using Voody.UniLeo;
 
-public class FireInputProvider : MonoProvider<FireInput> { }
+public sealed class FireInputProvider : MonoProvider<FireInput> { }

@@ -13,6 +13,7 @@ public class GunProjectileOnHitBehavior : MonoBehaviour
         if (collider.TryGetComponent(out AbstractTeamMark team) == false)
         {
             projectile.IsActive = false;
+
             return;
         }
 
