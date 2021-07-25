@@ -1,19 +1,17 @@
-using Leopotam.Ecs;
-
 /// <summary>
 /// Add velocity to body
 /// </summary>
-public class WalkSystem : EcsSystemWrapper, IEcsRunSystem
+public class WalkSystem : EcsSystemWrapper
 {
-    private EcsFilter<Walk> _filter = null;
+    //private EcsFilter<Walk> _filter = null;
 
     public void Run()
     {
-        foreach (var i in _filter)
-        {
-            ref Walk walk = ref _filter.Get1(i);
+        //foreach (var i in _filter)
+        //{
+        //    ref Walk walk = ref _filter.Get1(i);
 
-            walk.body.velocity = walk.velocity;
-        }
+        //    walk.body.velocity = walk.velocity;
+        //}
     }
 }

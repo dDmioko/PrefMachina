@@ -1,13 +1,11 @@
 using UnityEngine;
 
-using Leopotam.Ecs;
-
 /// <summary>
 /// Deactivate if out of range
 /// </summary>
-public class DeactivateOnOffScreenSystem : EcsSystemWrapper, IEcsRunSystem
+public class DeactivateOnOffScreenSystem : EcsSystemWrapper
 {
-    private EcsFilter<DeactivateOnOffScreen> _filter = null;
+    //private EcsFilter<DeactivateOnOffScreen> _filter = null;
 
     private Rect screenBox;
 
@@ -24,33 +22,33 @@ public class DeactivateOnOffScreenSystem : EcsSystemWrapper, IEcsRunSystem
 
     public void Run()
     {
-        foreach (var i in _filter)
-        {
-            ref EcsEntity entity = ref _filter.GetEntity(i);
+        //foreach (var i in _filter)
+        //{
+        //    ref EcsEntity entity = ref _filter.GetEntity(i);
 
-            if (entity.IsAlive() == false)
-            {
-                continue;
-            }
+        //    if (entity.IsAlive() == false)
+        //    {
+        //        continue;
+        //    }
 
-            ref DeactivateOnOffScreen component = ref _filter.Get1(i);
+        //    ref DeactivateOnOffScreen component = ref _filter.Get1(i);
 
-            if (component.gameObject.activeSelf == false)
-            {
-                continue;
-            }
+        //    if (component.gameObject.activeSelf == false)
+        //    {
+        //        continue;
+        //    }
 
-            Vector3 vec3 = Camera.main.WorldToScreenPoint(component.transform.position);
-            Vector2 projectileOnRect = new Vector2(vec3.x, vec3.y);
+        //    Vector3 vec3 = Camera.main.WorldToScreenPoint(component.transform.position);
+        //    Vector2 projectileOnRect = new Vector2(vec3.x, vec3.y);
 
-            bool state = screenBox.Contains(projectileOnRect, true);
+        //    bool state = screenBox.Contains(projectileOnRect, true);
 
-            component.gameObject.SetActive(state);
+        //    component.gameObject.SetActive(state);
 
-            if (component.isDelete)
-            {
-                Destroy(component.gameObject);
-            }
-        }
+        //    if (component.isDelete)
+        //    {
+        //        Destroy(component.gameObject);
+        //    }
+        //}
     }
 }

@@ -1,4 +1,3 @@
-using Leopotam.Ecs;
 using UnityEngine;
 
 /// <summary>
@@ -6,7 +5,7 @@ using UnityEngine;
 /// </summary>
 public class FireInputSystem : EcsSystemWrapper
 {
-    private EcsFilter<FireInput> _filter = null;
+    //private EcsFilter<FireInput> _filter = null;
 
     [SerializeField] private FireInputControl input;
 
@@ -24,21 +23,21 @@ public class FireInputSystem : EcsSystemWrapper
 
     private void OnUp()
     {
-        foreach (var i in _filter)
-        {
-            ref FireInput input = ref _filter.Get1(i);
+        //foreach (var i in _filter)
+        //{
+        //    ref FireInput input = ref _filter.Get1(i);
 
-            input.Up?.Invoke();
-        }
+        //    input.Up?.Invoke();
+        //}
     }
 
     private void OnDown()
     {
-        foreach (var i in _filter)
-        {
-            ref FireInput input = ref _filter.Get1(i);
+        //foreach (var i in _filter)
+        //{
+        //    ref FireInput input = ref _filter.Get1(i);
 
-            input.Down?.Invoke();
-        }
+        //    input.Down?.Invoke();
+        //}
     }
 }
