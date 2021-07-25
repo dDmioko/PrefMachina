@@ -1,7 +1,11 @@
+using Unity.Entities;
+using Unity.Physics;
+
 /// <summary>
 /// Add velocity to body
 /// </summary>
-public class WalkSystem : EcsSystemWrapper
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+public class WalkSystem : SystemBase
 {
     //private EcsFilter<Walk> _filter = null;
 
@@ -13,5 +17,14 @@ public class WalkSystem : EcsSystemWrapper
 
         //    walk.body.velocity = walk.velocity;
         //}
+    }
+
+    protected override void OnUpdate()
+    {
+        Entities.ForEach((ref PhysicsVelocity velocity, in Walk walk) => {
+
+            velocity.Linear = walk.velocity;
+
+        }).Run();
     }
 }

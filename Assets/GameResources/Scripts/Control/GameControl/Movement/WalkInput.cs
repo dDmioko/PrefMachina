@@ -1,7 +1,10 @@
 using System;
+using Unity.Entities;
+using UnityEngine;
 
 [Serializable]
-public struct WalkInput
+[GenerateAuthoringComponent]
+public struct WalkInput : IComponentData
 {
     //Note: just mark   
 }

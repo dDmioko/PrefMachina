@@ -1,13 +1,11 @@
 using System;
+using Unity.Entities;
 using UnityEngine;
 
 [Serializable]
-public struct Walk
+[GenerateAuthoringComponent]
+public struct Walk : IComponentData
 {
-    public Transform transform;
-
-    public Rigidbody body;
-
     public float speed;
 
     [HideInInspector]

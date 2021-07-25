@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Deactivate if out of range
 /// </summary>
-public class DeactivateOnOffScreenSystem : EcsSystemWrapper
+public class DeactivateOnOffScreenSystem
 {
     //private EcsFilter<DeactivateOnOffScreen> _filter = null;
 

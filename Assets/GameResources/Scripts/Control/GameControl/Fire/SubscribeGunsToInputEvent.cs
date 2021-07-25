@@ -3,7 +3,7 @@ using ModuleBallistics;
 /// <summary>
 /// Subscribe guns fire functions to input event
 /// </summary>
-public class SubscribeGunsToInputEvent : EcsSystemWrapper
+public class SubscribeGunsToInputEvent
 {
     //private EcsFilter<Fire, FireInput> _filter = null;
 

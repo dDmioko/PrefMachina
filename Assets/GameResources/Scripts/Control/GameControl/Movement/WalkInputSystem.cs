@@ -1,34 +1,38 @@
+using Unity.Entities;
+using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
-/// Get input and add it to walk component
+/// Player walk input
 /// </summary>
-public class WalkInputSystem : EcsSystemWrapper
-{
-    //private EcsFilter<Walk, WalkInput> _filter = null;
+public class WalkInputSystem : AbstractInputControl
+{    
+    protected override void OnUpdate() { }
 
-    [SerializeField] private WalkInputControl input;
-
-    private void OnEnable()
+    protected override void SubscribeInputActions()
     {
-        input.Input += OnInput;
+        inputActions.Main.Movement.performed += OnInput;
+        inputActions.Main.Movement.canceled += OnInput;
     }
 
-    private void OnDisable()
+    protected override void UnsubscribeInputActions()
     {
-        input.Input -= OnInput;
+        inputActions.Main.Movement.performed -= OnInput;
+        inputActions.Main.Movement.canceled -= OnInput;
     }
 
-    private void OnInput(Vector2 direction)
+    private void OnInput(InputAction.CallbackContext context)
     {
-        //foreach (var i in _filter)
-        //{
-        //    ref Walk movable = ref _filter.Get1(i);
+        Vector2 direction = context.ReadValue<Vector2>();
 
-        //    float x = movable.speed * direction.x;
-        //    float z = movable.speed * direction.y;
+        Entities.ForEach((ref Walk walk, in WalkInput input, in Translation translation) => {
 
-        //    movable.velocity = z * movable.transform.forward + x * movable.transform.right;
-        //}
+            float x = walk.speed * direction.x;
+            float z = walk.speed * direction.y;
+
+            walk.velocity = z * Vector3.forward + x * Vector3.right;
+
+        }).Run();        
     }
 }

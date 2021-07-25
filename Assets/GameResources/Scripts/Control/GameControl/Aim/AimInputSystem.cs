@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Get input and add it to aim component
 /// </summary>
-public class AimInputSystem : EcsSystemWrapper
+public class AimInputSystem
 {
     //private EcsFilter<Aim, AimInput> _filter = null;
 

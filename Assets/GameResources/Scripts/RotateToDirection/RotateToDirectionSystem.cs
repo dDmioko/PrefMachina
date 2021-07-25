@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Rotate moving object towards its direction
 /// </summary>
-public class RotateToDirectionSystem : EcsSystemWrapper
+public class RotateToDirectionSystem 
 {
     //private EcsFilter<RotateToDirection> _filter = null;
 

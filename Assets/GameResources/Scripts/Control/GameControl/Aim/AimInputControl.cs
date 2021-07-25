@@ -44,9 +44,14 @@ public class AimInputControl : AbstractInputControl
 
     private void SetDirection(Vector2 input, bool isMouse)
     {
-        if (deadZone.Check(input, isMouse) == false)
-        {
-            Input?.Invoke(input.normalized);
-        }
+        //if (deadZone.Check(input, isMouse) == false)
+        //{
+        //    Input?.Invoke(input.normalized);
+        //}
+    }
+
+    protected override void OnUpdate()
+    {
+        
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathSystem : EcsSystemWrapper
+public class DeathSystem
 {
     //private EcsFilter<Health> _filter = null;
 

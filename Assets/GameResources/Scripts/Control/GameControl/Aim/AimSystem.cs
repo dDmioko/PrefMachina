@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Rotate
 /// </summary>
-public class AimSystem : EcsSystemWrapper
+public class AimSystem
 {
     //private EcsFilter<Aim> _filter = null;
 

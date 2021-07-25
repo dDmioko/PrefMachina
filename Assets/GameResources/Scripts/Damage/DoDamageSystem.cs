@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoDamageSystem : EcsSystemWrapper
+public class DoDamageSystem
 {    
     //private EcsFilter<Health, Damage> _filter = null;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Fire input system
 /// </summary>
-public class FireInputSystem : EcsSystemWrapper
+public class FireInputSystem
 {
     //private EcsFilter<FireInput> _filter = null;
 

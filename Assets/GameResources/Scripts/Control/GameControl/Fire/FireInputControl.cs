@@ -30,4 +30,9 @@ public class FireInputControl : AbstractInputControl
     {
         Down?.Invoke();
     }
+
+    protected override void OnUpdate()
+    {
+        
+    }
 }

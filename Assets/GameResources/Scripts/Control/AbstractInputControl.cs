@@ -1,24 +1,28 @@
 using System;
-using UnityEngine;
+using Unity.Entities;
 
 /// <summary>
 /// Abstract input control
 /// </summary>
-public abstract class AbstractInputControl : MonoBehaviour
+public abstract class AbstractInputControl : SystemBase
 {
     public event Action Inited;
 
     protected PlayerActions inputActions;
 
-    protected virtual void Awake()
+    protected override void OnCreate()
     {
+        base.OnCreate();
+
         inputActions = new PlayerActions();
 
         Inited?.Invoke();
     }
 
-    protected virtual void OnEnable()
+    protected override void OnStartRunning()
     {
+        base.OnStartRunning();
+
         if (inputActions is null)
         {
             Inited += ActivateInputActions;
@@ -29,8 +33,10 @@ public abstract class AbstractInputControl : MonoBehaviour
         ActivateInputActions();
     }
 
-    protected virtual void OnDisable()
+    protected override void OnStopRunning()
     {
+        base.OnStopRunning();
+
         Inited -= ActivateInputActions;
 
         DeactivateInputActions();
