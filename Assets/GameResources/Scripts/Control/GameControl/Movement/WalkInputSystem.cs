@@ -1,5 +1,4 @@
 using Unity.Entities;
-using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,13 +25,10 @@ public class WalkInputSystem : AbstractInputControl
     {
         Vector2 direction = context.ReadValue<Vector2>();
 
-        Entities.ForEach((ref Walk walk, in WalkInput input, in Translation translation) => {
+        Entities.ForEach((ref Walk walk, in WalkInput input) => {
 
-            float x = walk.speed * direction.x;
-            float z = walk.speed * direction.y;
+            walk.direction = direction.y * Vector3.forward + direction.x * Vector3.right;
 
-            walk.velocity = z * Vector3.forward + x * Vector3.right;
-
-        }).Run();        
+        }).Run();      
     }
 }

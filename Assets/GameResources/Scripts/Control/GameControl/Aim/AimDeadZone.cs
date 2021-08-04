@@ -3,13 +3,27 @@ using UnityEngine;
 /// <summary>
 /// Inpute dead zone for aiming
 /// </summary>
-public class AimDeadZone : MonoBehaviour
+public class AimDeadZone
 {
-    [Range(0, 1f)]
-    [SerializeField] private float MinDeadZone = 0.125f;
+    private const string MIN_DEAD_ZONE_KEY = "MinDeadZone";
+    private const string MOUSE_MIN_DEAD_ZONE_KEY = "MouseMinDeadZone";
 
-    [Range(0, 1f)]
-    [SerializeField] private float MouseMinDeadZone = 0.125f;
+    private const float MIN_DEAD_ZONE_DEFAULT = 0.125f;
+    private const float MOUSE_MIN_DEAD_ZONE_DEFAULT = 0.125f;
+
+    private float MinDeadZone = 0.125f;
+    private float MouseMinDeadZone = 0.125f;
+
+    public AimDeadZone()
+    {
+        Init();
+    }
+
+    private void Init()
+    {
+        MinDeadZone = PlayerPrefs.GetFloat(MIN_DEAD_ZONE_KEY, MIN_DEAD_ZONE_DEFAULT);
+        MouseMinDeadZone = PlayerPrefs.GetFloat(MOUSE_MIN_DEAD_ZONE_KEY, MOUSE_MIN_DEAD_ZONE_DEFAULT);        
+    }
 
     /// <summary>
     /// Check dead zone

@@ -1,7 +1,7 @@
-using System;
+using Unity.Entities;
 
-[Serializable]
-public struct AimInput
+[GenerateAuthoringComponent]
+public struct AimInput : IComponentData
 {
     //Note: just mark
 }

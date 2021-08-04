@@ -1,10 +1,11 @@
-using System;
+using Unity.Entities;
+using Unity.Transforms;
 using UnityEngine;
 
-[Serializable]
-public struct Aim
+[GenerateAuthoringComponent]
+public struct Aim : IComponentData
 {
-    public Transform transform;
+    public Entity bodyEntity;    
 
     [Range(0, Mathf.PI)]
     public float speed;

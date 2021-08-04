@@ -1,20 +1,31 @@
+using Unity.Entities;
+using Unity.Transforms;
 using UnityEngine;
 
 /// <summary>
 /// Rotate
 /// </summary>
-public class AimSystem
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+public class AimSystem : SystemBase
 {
-    //private EcsFilter<Aim> _filter = null;
-
-    public void Run()
+    protected override void OnCreate()
     {
-        //foreach (var i in _filter)
-        //{
-        //    ref Aim aim = ref _filter.Get1(i);
+        base.OnCreate();
 
-        //    Vector3 newDirection = Vector3.RotateTowards(aim.transform.forward, aim.direction, aim.speed, 0.0f);
-        //    aim.transform.rotation = Quaternion.LookRotation(newDirection);
-        //}
+        //Entities.ForEach((ref Aim aim) =>
+        //{
+        //    aim.rotation = EntityManager.GetComponentObject<Rotation>(aim.entity);
+        //}).WithoutBurst().Run();
+    }
+
+    protected override void OnUpdate()
+    {
+        Entities.ForEach((ref Aim aim) => {
+            
+            Vector3 newDirection = Vector3.RotateTowards(Vector3.forward, aim.direction, aim.speed, 0.0f);
+            Rotation rotation = EntityManager.GetComponentObject<Rotation>(aim.bodyEntity);
+            rotation.Value = Quaternion.LookRotation(newDirection);
+
+        }).WithoutBurst().Run();
     }
 }
