@@ -9,6 +9,8 @@ public class FireInputControl : AbstractInputControl
     public event Action Up;
     public event Action Down;
 
+    protected override void OnUpdate() { }
+
     protected override void SubscribeInputActions()
     {
         inputActions.Main.Fire.canceled += OnUp;
@@ -29,10 +31,5 @@ public class FireInputControl : AbstractInputControl
     private void OnDown(InputAction.CallbackContext context)
     {
         Down?.Invoke();
-    }
-
-    protected override void OnUpdate()
-    {
-        
-    }
+    }    
 }
