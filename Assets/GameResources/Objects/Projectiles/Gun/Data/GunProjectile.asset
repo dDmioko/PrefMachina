@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: GunProjectile
   prefab: {fileID: 7638880214521575698, guid: 7df0d1b430e39044bb12f3fd13e3e2e0, type: 3}
+  preferedPoolSize: 10
+  damage:
+    amount: 10
   startForce: 2.5

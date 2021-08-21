@@ -14,7 +14,7 @@ public class AimInput : AbstractInputControl
 
     public event Action<Vector2> Aim;
 
-    [SerializeField] private AimDeadZone deadZone;
+    [SerializeField] private AimDeadZone deadZone = default;
 
     protected override void SubscribeInputActions()
     {

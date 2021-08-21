@@ -7,10 +7,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GunProjectile : AbstractProjectile
 {
-    [SerializeField] private Rigidbody body;
+    [SerializeField] private Rigidbody body = default;
 
     [Tooltip("In pixels. If projectile fly further - it deactivates")]
     [SerializeField] private float outOfScreenDistance = 50f;
+
+    private GunProjectileData projectileData;
+    public GunProjectileData ProjectileData => projectileData;
 
     private Rect screenBox;
 
@@ -26,7 +29,7 @@ public class GunProjectile : AbstractProjectile
 
     public override void Init(ShootData shootData, AbstractProjectileData projectileData)//; Vector3 position, Quaternion direction, AbstractProjectileData data)
     {
-        GunProjectileData downCastedProjectileData = projectileData as GunProjectileData;
+        this.projectileData = projectileData as GunProjectileData;
 
         base.Init(shootData, projectileData);
 
@@ -36,7 +39,7 @@ public class GunProjectile : AbstractProjectile
 
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
-        body.AddForce(transform.forward * downCastedProjectileData.StartForce, ForceMode.Impulse);
+        body.AddForce(transform.forward * this.projectileData.StartForce, ForceMode.Impulse);
     }
 
     private void FixedUpdate()
