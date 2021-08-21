@@ -8,7 +8,11 @@ using UnityEngine;
 public class GunProjectileData : AbstractProjectileData
 {
     [SerializeField]
-    protected float startForce = default;
+    private Damage damage = default;
+    public Damage Damage => damage;
+
+    [SerializeField]
+    protected float startForce = default;    
 
     /// <summary>
     /// Speed

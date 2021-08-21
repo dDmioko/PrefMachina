@@ -9,7 +9,7 @@ public class FireControl : MonoBehaviour
 {
     [SerializeField] private FireInput input = default;
 
-    [SerializeField] private SimpleGun gun;
+    [SerializeField] private SimpleGun gun = default;
 
     private void OnEnable()
     {
