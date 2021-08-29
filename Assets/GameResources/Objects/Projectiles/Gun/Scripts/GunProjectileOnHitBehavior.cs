@@ -1,4 +1,3 @@
-using ModuleBallistics;
 using UnityEngine;
 
 /// <summary>
@@ -16,9 +15,9 @@ public class GunProjectileOnHitBehavior : MonoBehaviour
             {
                 projectile.IsActive = false;
 
-                if (collider.TryGetComponent(out Health health))
+                if (collider.TryGetComponent(out DamageTakingController damageTakingController))
                 {
-                    health.DoDamage(projectile.ProjectileData.Damage);
+                    damageTakingController.TakeDamage(projectile.ProjectileData.Damage);
                 }
             }
 

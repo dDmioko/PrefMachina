@@ -255,7 +255,9 @@ GameObject:
   - component: {fileID: 644068422}
   - component: {fileID: 644068421}
   - component: {fileID: 644068420}
+  - component: {fileID: 644068426}
   - component: {fileID: 644068424}
+  - component: {fileID: 644068427}
   - component: {fileID: 644068425}
   m_Layer: 0
   m_Name: Cube
@@ -366,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 50
+  maxAmount: 50
 --- !u!114 &644068425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +382,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 644068424}
+--- !u!114 &644068426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644068418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf364ade66ca89840b431635cacb8e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 50
+  maxAmount: 50
+  isRegenerating: 1
+  regenerationTime: 5
+  regenerationAmount: 10
+--- !u!114 &644068427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644068418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157660e8bf8ad20438c9e5c22db021c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTakers:
+  - {fileID: 644068426}
+  - {fileID: 644068424}
 --- !u!1 &692493201
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 5
+  maxAmount: 0
 --- !u!1 &1817035224
 GameObject:
   m_ObjectHideFlags: 0
