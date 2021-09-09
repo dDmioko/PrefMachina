@@ -8,7 +8,7 @@ public class Death : MonoBehaviour
 {
     public event Action Died;
 
-    [SerializeField] private Health health;
+    [SerializeField] private Health health = default;
 
     private void OnEnable()
     {

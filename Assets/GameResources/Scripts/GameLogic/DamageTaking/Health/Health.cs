@@ -2,25 +2,44 @@
 /// Health
 /// </summary>
 public class Health : DamageTaker
-{
-    /// <summary>
-    /// Take damage to this component
-    /// </summary>
-    /// <param name="damage">damage</param>
+{        
     public override Damage TakeDamage(Damage damage)
     {
-        if (damage.amount <= 0)
+        if (damage.Amount <= 0)
         {
             return damage;
         }
 
-        Damage restDamage = new Damage(damage.amount - amount);
+        Damage restDamage = new Damage(damage.Amount - Amount);
 
-        amount -= damage.amount;
-        amount = amount < 0 ? 0 : amount;
+        Amount -= damage.Amount;        
 
-        InvokeAmountChanged(amount, -damage.amount);        
+        InvokeAmountChanged(Amount, -damage.Amount);        
 
         return restDamage;
+    }
+
+    public override void Heal(Heal heal)
+    {
+        if (heal.Amount <= 0)
+        {
+            return;
+        }
+        
+        Amount += heal.Amount;        
+
+        InvokeAmountChanged(Amount, heal.Amount);        
+    }
+
+    public override void Regenerate(Heal heal)
+    {
+        if (heal.Amount <= 0)
+        {
+            return;
+        }
+
+        Amount += heal.Amount;        
+
+        InvokeAmountChanged(Amount, heal.Amount);
     }
 }

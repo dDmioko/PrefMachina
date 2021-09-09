@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DamageTakingController : MonoBehaviour
 {
-    [SerializeField] private DamageTaker[] damageTakers;
+    [SerializeField] private DamageTaker[] damageTakers = default;
 
     public void TakeDamage(Damage damage)
     {

@@ -1,89 +1,45 @@
-using System.Collections;
-using UnityEngine;
-
 /// <summary>
-/// Shield with regeneration
+/// Shield
 /// </summary>
 public class Shield : DamageTaker
 {
-    [SerializeField] private bool isRegenerating = true;
-
-    [SerializeField] private float regenerationTime = 0;
-    [SerializeField] private int regenerationAmount = 0;
-
-    private Coroutine coroutine = null;
-
-    private float timeToRegeneration;
-
-    private bool isAmountChanged = false;
-
-    private void OnEnable()
-    {
-        if (isRegenerating)
-        {
-            coroutine = StartCoroutine(Regenerate());
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
-        }
-    }
-
-    private IEnumerator Regenerate()
-    {
-        while (true)
-        {
-            timeToRegeneration = regenerationTime;                    
-            
-            yield return new WaitUntil(CheckIfCanRegenerate);
-
-            amount += regenerationAmount;
-
-            InvokeAmountChanged(amount, regenerationAmount);
-        }
-    }
-
-    private bool CheckIfCanRegenerate()
-    {
-        timeToRegeneration -= Time.deltaTime;
-
-        if (isAmountChanged || amount == maxAmount)
-        {
-            isAmountChanged = false;
-
-            timeToRegeneration = regenerationTime;
-
-            return false;
-        }
-
-        return timeToRegeneration <= 0;
-    }
-
     public override Damage TakeDamage(Damage damage)
     {
-        if (damage.amount <= 0)
+        if (damage.Amount == 0 || Amount == 0)
         {
             return damage;
-        }
+        }        
 
-        if (amount <= 0)
-        {
-            return damage;
-        }
+        Damage restDamage = new Damage(damage.Amount - Amount);
 
-        isAmountChanged = true;
+        Amount -= damage.Amount;        
 
-        Damage restDamage = new Damage(damage.amount - amount);
-
-        amount -= damage.amount;
-        amount = amount < 0 ? 0 : amount;
-
-        InvokeAmountChanged(amount, -damage.amount);
+        InvokeAmountChanged(Amount, -damage.Amount);
 
         return restDamage;
+    }
+
+    public override void Heal(Heal heal)
+    {
+        if (heal.Amount <= 0)
+        {
+            return;
+        }
+
+        Amount += heal.Amount;        
+
+        InvokeAmountChanged(Amount, heal.Amount);
+    }
+
+    public override void Regenerate(Heal heal)
+    {
+        if (heal.Amount <= 0)
+        {
+            return;
+        }
+
+        Amount += heal.Amount;        
+
+        InvokeAmountChanged(Amount, heal.Amount);
     }
 }
