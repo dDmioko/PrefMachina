@@ -20,22 +20,8 @@ public abstract class DamageTaker : MonoBehaviour
         }
 
         protected set
-        {
-            if (value > maxAmount)
-            {
-                amount = maxAmount;
-
-                return;
-            }
-
-            if (value < 0)
-            {
-                amount = 0;
-
-                return;
-            }
-
-            amount = value;
+        {            
+            amount = Mathf.Clamp(value, 0, maxAmount);
         }
     }
 
@@ -48,16 +34,10 @@ public abstract class DamageTaker : MonoBehaviour
     }
 
     /// <summary>
-    /// Reduce amount of hp in this component
+    /// Decrease amount of hp in this component
     /// </summary>
     /// <param name="damage">damage</param>
     public abstract Damage TakeDamage(Damage damage);
-
-    /// <summary>
-    /// Increase amount of hp in this component
-    /// </summary>
-    /// <param name="heal"></param>
-    public abstract void Regenerate(Heal heal);
 
     /// <summary>
     /// Increase amount of hp in this component

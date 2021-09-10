@@ -1,6 +1,9 @@
+using UnityEngine;
+
 /// <summary>
 /// Shield
 /// </summary>
+[DisallowMultipleComponent]
 public class Shield : DamageTaker
 {
     public override Damage TakeDamage(Damage damage)
@@ -20,18 +23,6 @@ public class Shield : DamageTaker
     }
 
     public override void Heal(Heal heal)
-    {
-        if (heal.Amount <= 0)
-        {
-            return;
-        }
-
-        Amount += heal.Amount;        
-
-        InvokeAmountChanged(Amount, heal.Amount);
-    }
-
-    public override void Regenerate(Heal heal)
     {
         if (heal.Amount <= 0)
         {

@@ -2,10 +2,11 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// Damage
+/// Abstract positive game value
+/// Use only as component in specific value realization
 /// </summary>
 [Serializable]
-public struct Damage
+public struct AbstractGameValue
 {
     [SerializeField]
     private int amount;
@@ -18,12 +19,12 @@ public struct Damage
 
         set
         {
-            amount = value < 0 ? 0 : value;
+            amount = Math.Max(0, value);
         }
     }
 
-    public Damage(int amount)
+    public AbstractGameValue(int amount)
     {
-        this.amount = amount > 0 ? amount : 0;        
+        this.amount = Math.Max(0, amount);
     }
 }

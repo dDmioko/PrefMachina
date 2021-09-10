@@ -15,7 +15,7 @@ public class GunProjectileOnHitBehavior : MonoBehaviour
             {
                 projectile.IsActive = false;
 
-                if (collider.TryGetComponent(out DamageTakingController damageTakingController))
+                if (collider.TryGetComponent(out SurvivalResourcesController damageTakingController))
                 {
                     damageTakingController.TakeDamage(projectile.ProjectileData.Damage);
                 }

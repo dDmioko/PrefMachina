@@ -40,7 +40,7 @@ public class Regeneration : MonoBehaviour
 
             yield return new WaitUntil(CheckIfCanRegenerate);
             
-            damageTaker.Regenerate(new Heal(regenerationAmount));            
+            damageTaker.Heal(new Heal(regenerationAmount));            
         }
     }
 
@@ -51,7 +51,6 @@ public class Regeneration : MonoBehaviour
         if (isAmountChanged || damageTaker.Amount == damageTaker.MaxAmount)
         {
             isAmountChanged = false;
-
             timeToRegeneration = regenerationTime;
 
             return false;

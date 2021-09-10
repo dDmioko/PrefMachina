@@ -409,9 +409,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157660e8bf8ad20438c9e5c22db021c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTakers:
-  - {fileID: 644068426}
-  - {fileID: 644068424}
+  health: {fileID: 644068424}
+  shield: {fileID: 644068426}
 --- !u!114 &644068428
 MonoBehaviour:
   m_ObjectHideFlags: 0
