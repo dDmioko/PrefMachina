@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 /// <summary>
 /// Damage
@@ -7,10 +6,12 @@ using UnityEngine;
 [Serializable]
 public struct Damage
 {
-    public int amount;
+    public AbstractGameValue Value;
+
+    public int Amount => Value.Amount;
 
     public Damage(int amount)
     {
-        this.amount = amount > 0 ? amount : 0;
+        Value = new AbstractGameValue(amount);
     }
 }
