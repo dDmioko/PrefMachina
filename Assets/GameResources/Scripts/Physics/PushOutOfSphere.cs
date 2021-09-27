@@ -83,13 +83,13 @@ public class PushOutOfSphere : MonoBehaviour
                     }
 
                     objects.RemoveAt(i);
-                }
-                else
-                {
-                    objects[i].attachedRigidbody.AddForce(objects[i].attachedRigidbody.mass * pushOutPower * transform.forward);
 
-                    ++i;
+                    continue;
                 }
+
+                objects[i].attachedRigidbody.AddForce(objects[i].attachedRigidbody.mass * pushOutPower * transform.forward);
+
+                ++i;
             }
 
             yield return new WaitForFixedUpdate();
