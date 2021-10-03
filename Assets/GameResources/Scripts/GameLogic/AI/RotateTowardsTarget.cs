@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Rotate towards target, but only around y axis
 /// </summary>
-public class RotateTowardsTarget : Targetable
+public class RotateTowardsTarget : TargetDependent
 {
     [SerializeField]
     [Range(0, Mathf.PI)]

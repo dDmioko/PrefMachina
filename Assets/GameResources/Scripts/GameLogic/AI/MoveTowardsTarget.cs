@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Move towards target if object "looks" on it
 /// </summary>
-public class MoveTowardsTarget : Targetable
+public class MoveTowardsTarget : TargetDependent
 {
     [SerializeField]
     private Rigidbody body = default;
@@ -18,8 +18,20 @@ public class MoveTowardsTarget : Targetable
     [Range(0, 180)]
     private float towardsAngle = 180f;
 
-    private void FixedUpdate()
+    private bool isActive = true;
+
+	private void OnEnable()
+	{
+        isActive = true;
+	}
+
+	private void FixedUpdate()
     {
+        if (isActive == false)
+		{
+            return;
+		}
+
         if (target == false)
         {
             return;
@@ -55,5 +67,12 @@ public class MoveTowardsTarget : Targetable
         }
 
         return speed;
+    }
+
+    public void Stop()
+	{
+        body.velocity = Vector3.zero;
+
+        isActive = false;
     }
 }

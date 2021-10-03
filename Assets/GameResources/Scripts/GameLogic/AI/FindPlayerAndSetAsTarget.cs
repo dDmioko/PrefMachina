@@ -6,7 +6,7 @@ using UnityEngine;
 public class FindPlayerAndSetAsTarget : MonoBehaviour
 {
     [SerializeField]
-    private Targetable[] targetables = default;
+    private TargetDependent[] targetables = default;
 
     private void Awake()
     {
@@ -29,7 +29,7 @@ public class FindPlayerAndSetAsTarget : MonoBehaviour
     {
         Player.Inited -= SetTarget;
 
-        foreach (Targetable targetable in targetables)
+        foreach (TargetDependent targetable in targetables)
         {
             targetable.SetTarget(Player.Instance.transform);
         }

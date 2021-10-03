@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 6465210101432276855}
   - component: {fileID: 4682152596349683313}
   - component: {fileID: 1030194456}
+  - component: {fileID: 1848989341}
+  - component: {fileID: 1848989342}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -251,3 +253,92 @@ MonoBehaviour:
   targetables:
   - {fileID: 6465210101432276855}
   - {fileID: 4682152596349683313}
+  - {fileID: 1848989341}
+  - {fileID: 1848989342}
+--- !u!114 &1848989341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b716316923a6cd42af4a7c1694c53fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  Explosion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7246144735392531560}
+        m_TargetAssemblyTypeName: Death, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ownCollider: {fileID: 7246144735392531556}
+  explosionRadius: 2.5
+  damage:
+    Value:
+      amount: 10
+  force: 500
+--- !u!114 &1848989342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2885d87a6ecd684f91c0de2c00a189f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  TargetAchieved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848989341}
+        m_TargetAssemblyTypeName: ExplodeSelf, Assembly-CSharp
+        m_MethodName: Explode
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6465210101432276855}
+        m_TargetAssemblyTypeName: MoveTowardsTarget, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4682152596349683313}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerDistance: 1.5

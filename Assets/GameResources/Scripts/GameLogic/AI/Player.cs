@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
 
         instance = this;
 
-        Inited();
+        Inited?.Invoke();
     }
 
     private void OnDestroy()

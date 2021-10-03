@@ -26,7 +26,7 @@ public class MovementControl : MonoBehaviour
 
     private void FixedUpdate()
     {
-        body.velocity = velocity;
+        body.velocity = velocity + body.velocity.y * Vector3.up;
     }
 
     private void OnMovement(Vector2 direction)
@@ -34,6 +34,7 @@ public class MovementControl : MonoBehaviour
         float x = speed * direction.x;
         float z = speed * direction.y;
 
-        velocity = z * transform.forward + x * transform.right;
+        velocity = z * transform.forward 
+            + x * transform.right;
     }
 }

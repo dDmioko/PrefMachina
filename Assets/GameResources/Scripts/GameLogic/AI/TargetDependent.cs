@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// Component that has target
 /// </summary>
-public class Targetable : MonoBehaviour
+public class TargetDependent : MonoBehaviour
 {
     [SerializeField]
     protected Transform target = default;
