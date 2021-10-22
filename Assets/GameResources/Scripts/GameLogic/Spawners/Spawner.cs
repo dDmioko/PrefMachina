@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        InstantSpaawn();        
+        InstantSpawn();        
     }
 
 	private void OnDisable()
