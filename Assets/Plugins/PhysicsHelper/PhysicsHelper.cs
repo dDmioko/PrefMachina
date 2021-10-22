@@ -49,9 +49,7 @@ namespace Ditzelgames
 
         public static Vector3 QuaternionToAngularVelocity(Quaternion rotation)
         {
-            float angleInDegrees;
-            Vector3 rotationAxis;
-            rotation.ToAngleAxis(out angleInDegrees, out rotationAxis);
+            rotation.ToAngleAxis(out float angleInDegrees, out Vector3 rotationAxis);
 
             return rotationAxis * angleInDegrees * Mathf.Deg2Rad;
         }
