@@ -43,7 +43,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-	private void InstantSpaawn()
+	private void InstantSpawn()
 	{
         if (spawnType == SpawnTypes.Instant)
         {
