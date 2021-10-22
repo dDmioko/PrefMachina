@@ -16,4 +16,9 @@ public class TargetDependent : MonoBehaviour
     {
         this.target = target;
     }
+
+    public Vector3 GetNormalizedDirection()
+	{
+        return (target.position - transform.position).normalized;
+    }
 }

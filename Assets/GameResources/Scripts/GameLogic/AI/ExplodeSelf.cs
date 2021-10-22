@@ -5,7 +5,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Do explosion and destroy self
 /// </summary>
-public class ExplodeSelf : TargetDependent
+public class ExplodeSelf : MonoBehaviour
 {    
     public UnityEvent Explosion;
 
