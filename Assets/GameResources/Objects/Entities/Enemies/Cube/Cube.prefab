@@ -12,13 +12,20 @@ GameObject:
   - component: {fileID: 7246144735392531558}
   - component: {fileID: 7246144735392531559}
   - component: {fileID: 7246144735392531556}
+  - component: {fileID: 7490064484906675298}
+  - component: {fileID: 644068435}
   - component: {fileID: 7246144735392531557}
   - component: {fileID: 7246144735392531563}
   - component: {fileID: 7246144735392531561}
   - component: {fileID: 7246144735392531562}
   - component: {fileID: 7246144735392531560}
   - component: {fileID: 7246144735392531565}
-  - component: {fileID: 7490064484906675298}
+  - component: {fileID: 1030194456}
+  - component: {fileID: 1848989341}
+  - component: {fileID: 1848989342}
+  - component: {fileID: 1409937013}
+  - component: {fileID: 1409937014}
+  - component: {fileID: 1565482970}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -104,6 +111,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7490064484906675298
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  serializedVersion: 2
+  m_Mass: 80
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!95 &644068435
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e2f824b7d8049f40b5a0b0174ca6a80, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7246144735392531557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,19 +229,164 @@ MonoBehaviour:
   damageTaker: {fileID: 7246144735392531563}
   regenerationTime: 1
   regenerationAmount: 5
---- !u!54 &7490064484906675298
-Rigidbody:
+--- !u!114 &1030194456
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7246144735392531555}
-  serializedVersion: 2
-  m_Mass: 80
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34290e39dce209c4091bf527c83be5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetsTeams: 00000000
+  targetables:
+  - {fileID: 1409937013}
+  - {fileID: 1848989342}
+  updateDelay: 0.05
+--- !u!114 &1848989341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b716316923a6cd42af4a7c1694c53fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7246144735392531560}
+        m_TargetAssemblyTypeName: Death, Assembly-CSharp
+        m_MethodName: Kill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ownCollider: {fileID: 7246144735392531556}
+  explosionRadius: 5
+  damage:
+    Value:
+      amount: 10
+  force: 40000
+--- !u!114 &1848989342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2885d87a6ecd684f91c0de2c00a189f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  TargetAchieved:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848989341}
+        m_TargetAssemblyTypeName: ExplodeSelf, Assembly-CSharp
+        m_MethodName: Explode
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1409937014}
+        m_TargetAssemblyTypeName: AITargetMove, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1565482970}
+        m_TargetAssemblyTypeName: AITargetRotate, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 644068435}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ReadyToExplode
+          m_BoolArgument: 0
+        m_CallState: 2
+  triggerDistance: 2.5
+  checkDelay: 0.05
+--- !u!114 &1409937013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84661742f105f274d8b869694d95c4e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  updateDelay: 0.05
+--- !u!114 &1409937014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e630176a7567bf94fb2bca470c70130e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 1409937013}
+  body: {fileID: 7490064484906675298}
+  acceleration: 30
+  maxSpeed: 15
+  towardsAngle: 180
+--- !u!114 &1565482970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7246144735392531555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2073879c9f62994f9615c41a81ea6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 1409937013}
+  speed: 3.14

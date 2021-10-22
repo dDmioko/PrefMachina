@@ -7,10 +7,10 @@ using UnityEngine;
 public class SpawnEntity : ScriptableObject
 {
     [SerializeField]
-    private string id;
+    private string id = default;
     public string Id => id;
 
     [SerializeField] 
-    private GameObject prefab;
+    private GameObject prefab = default;
     public GameObject Prefab => prefab;
 }

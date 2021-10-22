@@ -22,6 +22,11 @@ public class Death : MonoBehaviour
             return;            
         }
 
+        Kill();
+    }
+
+    public void Kill()
+	{
         Died?.Invoke();
 
         gameObject.SetActive(false);

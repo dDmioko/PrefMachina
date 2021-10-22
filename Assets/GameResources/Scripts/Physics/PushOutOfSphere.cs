@@ -75,7 +75,7 @@ public class PushOutOfSphere : MonoBehaviour
         {
             for (int i = 0; i < objects.Count;)
             {
-                if (Vector3.Distance(transform.position, objects[i].transform.position) > radius)
+                if (objects[i].gameObject.activeSelf == false || Vector3.Distance(transform.position, objects[i].transform.position) > radius)
                 {
                     if (collider)
                     {
@@ -83,13 +83,13 @@ public class PushOutOfSphere : MonoBehaviour
                     }
 
                     objects.RemoveAt(i);
-                }
-                else
-                {
-                    objects[i].attachedRigidbody.AddForce(objects[i].attachedRigidbody.mass * pushOutPower * transform.forward);
 
-                    ++i;
+                    continue;
                 }
+
+                objects[i].attachedRigidbody.AddForce(objects[i].attachedRigidbody.mass * pushOutPower * transform.forward);
+
+                ++i;
             }
 
             yield return new WaitForFixedUpdate();

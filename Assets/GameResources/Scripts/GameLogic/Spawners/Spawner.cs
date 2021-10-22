@@ -32,6 +32,19 @@ public class Spawner : MonoBehaviour
             return;
         }
 
+        InstantSpawn();        
+    }
+
+	private void OnDisable()
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+    }
+
+	private void InstantSpawn()
+	{
         if (spawnType == SpawnTypes.Instant)
         {
             foreach (EntityAmountPair entityAmountPair in entities)
@@ -41,14 +54,6 @@ public class Spawner : MonoBehaviour
                     Instantiate(entityAmountPair.entity.Prefab, transform.position, transform.rotation, pool);
                 }
             }
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
         }
     }
 
