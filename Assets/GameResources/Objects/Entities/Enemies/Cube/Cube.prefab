@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf364ade66ca89840b431635cacb8e97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 55
-  maxAmount: 55
+  amount: 10
+  maxAmount: 10
 --- !u!114 &7246144735392531561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657d8ac52899aa34ebf552f49fb6e66f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 50
-  maxAmount: 50
+  amount: 10
+  maxAmount: 10
 --- !u!114 &7246144735392531562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +213,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12695b445bad22f429583e4afb62edac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Died:
+    m_PersistentCalls:
+      m_Calls: []
+  ZeroHealth:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1848989341}
+        m_TargetAssemblyTypeName: ExplodeSelf, Assembly-CSharp
+        m_MethodName: Explode
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   health: {fileID: 7246144735392531561}
+  isKillOnZeroHealth: 0
 --- !u!114 &7246144735392531565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,7 +296,7 @@ MonoBehaviour:
   explosionRadius: 5
   damage:
     Value:
-      amount: 10
+      amount: 50
   force: 40000
 --- !u!114 &1848989342
 MonoBehaviour:

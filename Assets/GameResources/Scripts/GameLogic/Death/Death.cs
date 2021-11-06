@@ -1,14 +1,17 @@
-using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
-/// Disable object
+/// Events on object death
 /// </summary>
 public class Death : MonoBehaviour
-{
-    public event Action Died;
+{    
+    public UnityEvent Died;
+    public UnityEvent ZeroHealth;
 
     [SerializeField] private Health health = default;
+
+    [SerializeField] private bool isKillOnZeroHealth = true;
 
     private void OnEnable()
     {
@@ -22,13 +25,23 @@ public class Death : MonoBehaviour
             return;            
         }
 
-        Kill();
+        ZeroHP();
+    }
+
+    private void ZeroHP()
+	{
+        ZeroHealth.Invoke();
+        
+        if (isKillOnZeroHealth)
+		{
+            Kill();
+        }        
     }
 
     public void Kill()
-	{
-        Died?.Invoke();
+    {
+        Died.Invoke();
 
-        gameObject.SetActive(false);
+        gameObject.SetActive(false);        
     }
 }

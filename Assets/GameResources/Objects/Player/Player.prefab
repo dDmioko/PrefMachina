@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2653795715617287916}
-  - component: {fileID: 2653795715617287919}
+  - component: {fileID: 8669028041373801977}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 2653795716810009234}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2653795715617287919
+--- !u!114 &8669028041373801977
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,11 +41,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2653795715617287917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31c36f74b66ce6040b9ffe4814be99ef, type: 3}
+  m_Script: {fileID: 11500000, guid: a355c6197154dee4bb4a1da6505a9a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   caster: {fileID: 0}
   projectileData: {fileID: 11400000, guid: 104561092ecb8a946bd877275ed75989, type: 2}
+  cooldown: 0.2
 --- !u!1 &2653795715868038297
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +65,7 @@ GameObject:
   - component: {fileID: 1588664039}
   - component: {fileID: 1588664044}
   - component: {fileID: 2653795716104244927}
+  - component: {fileID: 524738280}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -139,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 2653795715868038300}
-  gun: {fileID: 2653795715617287919}
+  gun: {fileID: 8669028041373801977}
 --- !u!54 &2653795716104244915
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -209,6 +211,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 1588664044}
   shield: {fileID: 0}
+--- !u!114 &524738280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2653795715868038297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12695b445bad22f429583e4afb62edac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Died:
+    m_PersistentCalls:
+      m_Calls: []
+  ZeroHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  health: {fileID: 1588664044}
+  isKillOnZeroHealth: 1
 --- !u!1 &2653795716317098073
 GameObject:
   m_ObjectHideFlags: 0
