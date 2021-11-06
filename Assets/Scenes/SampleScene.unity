@@ -128,11 +128,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 692493202}
+    m_TransformParent: {fileID: 870181481}
     m_Modifications:
     - target: {fileID: 7246144735392531554, guid: 25feb45bf0e8d2640b041f9ec073b629, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7246144735392531554, guid: 25feb45bf0e8d2640b041f9ec073b629, type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_CameraDistance: 10
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
-  m_DeadZoneDepth: 10
+  m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.15
   m_SoftZoneHeight: 0.15
@@ -650,10 +650,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1565482969}
+  m_Children: []
   m_Father: {fileID: 870181481}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &692493203
 MonoBehaviour:
@@ -1027,6 +1026,7 @@ Transform:
   m_Children:
   - {fileID: 340155964}
   - {fileID: 303847977}
+  - {fileID: 1565482969}
   - {fileID: 692493202}
   - {fileID: 1498882263}
   m_Father: {fileID: 1817035225}
@@ -1303,7 +1303,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 870181481}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1498882264
 Rigidbody:
@@ -1480,10 +1480,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 870181481}
     m_Modifications:
-    - target: {fileID: 2653795715617287919, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
-      propertyPath: caster
-      value: 
-      objectReference: {fileID: 340155965}
     - target: {fileID: 2653795715868038296, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1532,6 +1528,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8669028041373801977, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
+      propertyPath: caster
+      value: 
+      objectReference: {fileID: 340155965}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0e3b20763bb4a44c946bab18754ae49, type: 3}
 --- !u!1001 &6943693931875139685

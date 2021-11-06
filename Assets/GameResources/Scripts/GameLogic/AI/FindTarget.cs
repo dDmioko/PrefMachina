@@ -49,6 +49,13 @@ public class FindTarget : MonoBehaviour
 		{
 			List<Transform> list = GetList();
 
+			if (list.Count == 0)
+			{
+				yield return delay;
+
+				continue;
+			}
+
 			float minDistance = Vector3.Distance(transform.position, list[0].transform.position);
 			target = list[0].transform;
 

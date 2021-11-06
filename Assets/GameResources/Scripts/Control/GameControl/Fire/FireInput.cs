@@ -6,20 +6,28 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class FireInput : AbstractInputControl
 {
-    public event Action Fire;
+    public event Action StartFire;
+    public event Action StopFire;
 
     protected override void SubscribeInputActions()
     {
-        inputActions.Main.Fire.performed += OnFire;
+        inputActions.Main.Fire.performed += OnStartFire;
+        inputActions.Main.Fire.canceled += OnStopFire;
     }
 
     protected override void UnsubscribeInputActions()
     {
-        inputActions.Main.Fire.performed -= OnFire;
+        inputActions.Main.Fire.performed -= OnStartFire;
+        inputActions.Main.Fire.canceled -= OnStopFire;
     }
 
-    private void OnFire(InputAction.CallbackContext context)
+    private void OnStartFire(InputAction.CallbackContext context)
     {
-        Fire?.Invoke();
+        StartFire?.Invoke();
+    }
+
+    private void OnStopFire(InputAction.CallbackContext context)
+    {
+        StopFire?.Invoke();
     }
 }

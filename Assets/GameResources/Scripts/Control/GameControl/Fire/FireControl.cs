@@ -9,20 +9,27 @@ public class FireControl : MonoBehaviour
 {
     [SerializeField] private FireInput input = default;
 
-    [SerializeField] private SimpleGun gun = default;
+    [SerializeField] private AbstractGun gun = default;
 
     private void OnEnable()
     {
-        input.Fire += OnFire;
+        input.StartFire += OnStartFire;
+        input.StopFire += OnStopFire;
     }
 
     private void OnDisable()
     {
-        input.Fire -= OnFire;
+        input.StartFire -= OnStartFire;
+        input.StopFire -= OnStopFire;
     }
 
-    private void OnFire()
+    private void OnStartFire()
     {
         gun.StartFire();
+    }
+
+    private void OnStopFire()
+    {
+        gun.StopFire();
     }
 }
