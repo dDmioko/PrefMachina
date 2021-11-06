@@ -5,43 +5,43 @@ using UnityEngine.Events;
 /// Events on object death
 /// </summary>
 public class Death : MonoBehaviour
-{    
-    public UnityEvent Died;
-    public UnityEvent ZeroHealth;
+{
+	public UnityEvent Died;
+	public UnityEvent ZeroHealth;
 
-    [SerializeField] private Health health = default;
+	[SerializeField] private Health health = default;
 
-    [SerializeField] private bool isKillOnZeroHealth = true;
+	[SerializeField] private bool isKillOnZeroHealth = true;
 
-    private void OnEnable()
-    {
-        health.AmountChanged += OnHealthChanged;
-    }
-
-    private void OnHealthChanged(int amount, int difference)
-    {
-        if (amount > 0)
-        {
-            return;            
-        }
-
-        ZeroHP();
-    }
-
-    private void ZeroHP()
+	private void OnEnable()
 	{
-        ZeroHealth.Invoke();
-        
-        if (isKillOnZeroHealth)
+		health.AmountChanged += OnHealthChanged;
+	}
+
+	private void OnHealthChanged(int amount, int difference)
+	{
+		if (amount > 0)
 		{
-            Kill();
-        }        
-    }
+			return;
+		}
 
-    public void Kill()
-    {
-        Died.Invoke();
+		ZeroHP();
+	}
 
-        gameObject.SetActive(false);        
-    }
+	private void ZeroHP()
+	{
+		ZeroHealth.Invoke();
+
+		if (isKillOnZeroHealth)
+		{
+			Kill();
+		}
+	}
+
+	public void Kill()
+	{
+		Died.Invoke();
+
+		gameObject.SetActive(false);
+	}
 }
