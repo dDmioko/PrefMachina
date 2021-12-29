@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2653795715617287916}
-  - component: {fileID: 8669028041373801977}
+  - component: {fileID: 6156894784320512623}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 2653795716810009234}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8669028041373801977
+--- !u!114 &6156894784320512623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2653795715617287917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a355c6197154dee4bb4a1da6505a9a87, type: 3}
+  m_Script: {fileID: 11500000, guid: 7569beeef72830c4da842bb1f1e81b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  team: {fileID: 1588664039}
   caster: {fileID: 0}
   projectileData: {fileID: 11400000, guid: 104561092ecb8a946bd877275ed75989, type: 2}
-  cooldown: 0.2
+  cooldown: 0.25
 --- !u!1 &2653795715868038297
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 2653795715868038300}
-  gun: {fileID: 8669028041373801977}
+  gun: {fileID: 0}
 --- !u!54 &2653795716104244915
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class GunProjectileOnHitBehavior : MonoBehaviour
     {
         if (collider.TryGetComponent(out AbstractTeamMark team))
         {
-            if (team.GetType() == typeof(BadTeam))
+s            if (team.GetType() != projectile.Team.GetType())
             {
                 projectile.IsActive = false;
 

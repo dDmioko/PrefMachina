@@ -5,7 +5,7 @@ using UnityEngine;
 /// Simple rigidbody based ballistic projectile
 /// </summary>
 [RequireComponent(typeof(Rigidbody))]
-public class GunProjectile : AbstractProjectile
+public class GunProjectile : ProjectileWithTeam
 {
     [SerializeField] private Rigidbody body = default;
 
@@ -27,7 +27,7 @@ public class GunProjectile : AbstractProjectile
             Screen.height + outOfScreenDistance);
     }
 
-    public override void Init(ShootData shootData, AbstractProjectileData projectileData)//; Vector3 position, Quaternion direction, AbstractProjectileData data)
+    public override void Init(ShootData shootData, AbstractProjectileData projectileData)
     {
         this.projectileData = projectileData as GunProjectileData;
 
