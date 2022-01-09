@@ -7,7 +7,7 @@ public class AbstractGunWithTeam : AbstractGun
     private AbstractTeamMark team = default;
     public AbstractTeamMark Team => team;
 
-    private ShootDataWithTeam shootData = default;
+    protected ShootDataWithTeam shootData = default;
 
     private void Awake()
     {

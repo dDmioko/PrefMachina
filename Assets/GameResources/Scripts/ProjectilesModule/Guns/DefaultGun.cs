@@ -13,15 +13,7 @@ public class DefaultGun : AbstractGunWithTeam
     private float cooldown = 0.5f;
 
     private bool isFireing = false;
-    private float lastShootTime = 0;
-
-    private ShootDataWithTeam shootData = default;
-
-    private void Awake()
-    {
-        shootData = new ShootDataWithTeam();
-        shootData.team = Team;
-    }
+    private float lastShootTime = 0;    
 
     public override void StartFire()
     {
