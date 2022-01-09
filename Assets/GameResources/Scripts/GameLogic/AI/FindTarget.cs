@@ -7,113 +7,113 @@ using UnityEngine;
 /// </summary>
 public class FindTarget : MonoBehaviour
 {
-	[SerializeField]
-	private Teams[] targetsTeams = default;
+    [SerializeField]
+    private Teams[] targetsTeams = default;
 
-	[SerializeField]
-	private TargetDependent[] targetables = default;
+    [SerializeField]
+    private TargetDependent[] targetables = default;
 
-	[SerializeField]
-	private float updateDelay = 0.05f;
+    [SerializeField]
+    private float updateDelay = 0.05f;
 
-	private Transform target = default;
+    private Transform target = default;
 
-	private Coroutine coroutine = null;
+    private Coroutine coroutine = null;
 
-	private void OnEnable()
-	{
-		coroutine = StartCoroutine(Find());
-	}
+    private void OnEnable()
+    {
+        coroutine = StartCoroutine(Find());
+    }
 
-	private void OnDisable()
-	{
-		if (coroutine != null)
-		{
-			StopCoroutine(coroutine);
-		}
-	}
+    private void OnDisable()
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+    }
 
-	private void Set()
-	{
-		foreach (TargetDependent targetable in targetables)
-		{
-			targetable.SetTarget(target);
-		}
-	}
+    private void Set()
+    {
+        foreach (TargetDependent targetable in targetables)
+        {
+            targetable.SetTarget(target);
+        }
+    }
 
-	private IEnumerator Find()
-	{
-		WaitForSeconds delay = new WaitForSeconds(updateDelay);
+    private IEnumerator Find()
+    {
+        WaitForSeconds delay = new WaitForSeconds(updateDelay);
 
-		while (true)
-		{
-			List<Transform> list = GetList();
+        while (true)
+        {
+            List<Transform> list = GetList();
 
-			if (list.Count == 0)
-			{
-				yield return delay;
+            if (list.Count == 0)
+            {
+                yield return delay;
 
-				continue;
-			}
+                continue;
+            }
 
-			float minDistance = Vector3.Distance(transform.position, list[0].transform.position);
-			target = list[0].transform;
+            float minDistance = Vector3.Distance(transform.position, list[0].transform.position);
+            target = list[0].transform;
 
-			for (int i = 1; i < targetsTeams.Length; ++i)
-			{
-				float distance = Vector3.Distance(transform.position, list[i].transform.position);
+            for (int i = 1; i < targetsTeams.Length; ++i)
+            {
+                float distance = Vector3.Distance(transform.position, list[i].transform.position);
 
-				if (minDistance > distance)
-				{
-					minDistance = distance;
-					target = list[i].transform;
-				}
-			}
+                if (minDistance > distance)
+                {
+                    minDistance = distance;
+                    target = list[i].transform;
+                }
+            }
 
-			Set();
+            Set();
 
-			yield return delay;
-		}
-	}
+            yield return delay;
+        }
+    }
 
-	private List<Transform> GetList()
-	{
-		List<Transform> list = new List<Transform>();
+    private List<Transform> GetList()
+    {
+        List<Transform> list = new List<Transform>();
 
-		foreach (Teams team in targetsTeams)
-		{
-			list.AddRange(GetList(team));
-		}
+        foreach (Teams team in targetsTeams)
+        {
+            list.AddRange(GetList(team));
+        }
 
-		return list;
-	}
+        return list;
+    }
 
-	private List<Transform> GetList(Teams team)
-	{
-		switch (team)
-		{
-			case Teams.Good:
+    private List<Transform> GetList(Teams team)
+    {
+        switch (team)
+        {
+            case Teams.Good:
 
-				return GoodTeam.Team;
+                return GoodTeam.Team;
 
-			case Teams.Bad:
+            case Teams.Bad:
 
-				return BadTeam.Team;
+                return BadTeam.Team;
 
-			case Teams.DestractiveEnvironment:
+            case Teams.DestractiveEnvironment:
 
-				return DestructiveEnvironmentTeam.Team;
+                return DestructiveEnvironmentTeam.Team;
 
-			default:
+            default:
 
-				return null;
-		}
-	}
+                return null;
+        }
+    }
 
-	public enum Teams
-	{
-		Good,
-		Bad,
-		DestractiveEnvironment
-	}
+    public enum Teams
+    {
+        Good,
+        Bad,
+        DestractiveEnvironment
+    }
 }

@@ -5,13 +5,13 @@ using UnityEngine;
 /// </summary>
 public class GunProjectileOnHitBehavior : MonoBehaviour
 {
-    [SerializeField] private GunProjectile projectile = default;    
+    [SerializeField] private GunProjectile projectile = default;
 
     private void OnHit(Collider collider)
     {
         if (collider.TryGetComponent(out AbstractTeamMark team))
         {
-            if (team.GetType() == typeof(BadTeam))
+            if (team.GetType() != projectile.Team.GetType())
             {
                 projectile.IsActive = false;
 
