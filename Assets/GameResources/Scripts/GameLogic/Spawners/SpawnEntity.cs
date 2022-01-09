@@ -10,7 +10,7 @@ public class SpawnEntity : ScriptableObject
     private string id = default;
     public string Id => id;
 
-    [SerializeField] 
+    [SerializeField]
     private GameObject prefab = default;
     public GameObject Prefab => prefab;
 }

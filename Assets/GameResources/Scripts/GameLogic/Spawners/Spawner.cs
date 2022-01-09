@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     private Transform pool = default;
 
-    private Coroutine coroutine = null;    
+    private Coroutine coroutine = null;
 
     private void OnEnable()
     {
@@ -32,10 +32,10 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        InstantSpawn();        
+        InstantSpawn();
     }
 
-	private void OnDisable()
+    private void OnDisable()
     {
         if (coroutine != null)
         {
@@ -43,8 +43,8 @@ public class Spawner : MonoBehaviour
         }
     }
 
-	private void InstantSpawn()
-	{
+    private void InstantSpawn()
+    {
         if (spawnType == SpawnTypes.Instant)
         {
             foreach (EntityAmountPair entityAmountPair in entities)
@@ -96,7 +96,7 @@ public class Spawner : MonoBehaviour
             isObjectInZone = false;
 
             break;
-        }        
+        }
 
         return isObjectInZone;
     }

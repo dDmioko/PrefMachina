@@ -13,7 +13,7 @@ public class DefaultGun : AbstractGunWithTeam
     private float cooldown = 0.5f;
 
     private bool isFireing = false;
-    private float lastShootTime = 0;    
+    private float lastShootTime = 0;
 
     public override void StartFire()
     {
@@ -35,7 +35,7 @@ public class DefaultGun : AbstractGunWithTeam
         if (Time.time >= lastShootTime + cooldown)
         {
             shootData.position = transform.position;
-            shootData.rotation = transform.rotation;            
+            shootData.rotation = transform.rotation;
 
             caster.Cast(shootData, projectileData);
             lastShootTime = Time.time;

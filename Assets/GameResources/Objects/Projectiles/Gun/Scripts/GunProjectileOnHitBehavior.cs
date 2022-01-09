@@ -5,30 +5,30 @@ using UnityEngine;
 /// </summary>
 public class GunProjectileOnHitBehavior : MonoBehaviour
 {
-	[SerializeField] private GunProjectile projectile = default;
+    [SerializeField] private GunProjectile projectile = default;
 
-	private void OnHit(Collider collider)
-	{
-		if (collider.TryGetComponent(out AbstractTeamMark team))
-		{
-			if (team.GetType() != projectile.Team.GetType())
-			{
-				projectile.IsActive = false;
+    private void OnHit(Collider collider)
+    {
+        if (collider.TryGetComponent(out AbstractTeamMark team))
+        {
+            if (team.GetType() != projectile.Team.GetType())
+            {
+                projectile.IsActive = false;
 
-				if (collider.TryGetComponent(out SurvivalResourcesController damageTakingController))
-				{
-					damageTakingController.TakeDamage(projectile.ProjectileData.Damage);
-				}
-			}
+                if (collider.TryGetComponent(out SurvivalResourcesController damageTakingController))
+                {
+                    damageTakingController.TakeDamage(projectile.ProjectileData.Damage);
+                }
+            }
 
-			return;
-		}
+            return;
+        }
 
-		projectile.IsActive = false;
-	}
+        projectile.IsActive = false;
+    }
 
-	private void OnTriggerEnter(Collider collider)
-	{
-		OnHit(collider);
-	}
+    private void OnTriggerEnter(Collider collider)
+    {
+        OnHit(collider);
+    }
 }
