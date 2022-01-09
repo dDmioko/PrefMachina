@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 2653795715868038300}
-  gun: {fileID: 0}
+  gun: {fileID: 6156894784320512623}
 --- !u!54 &2653795716104244915
 Rigidbody:
   m_ObjectHideFlags: 0
